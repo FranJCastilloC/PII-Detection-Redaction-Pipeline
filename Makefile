@@ -10,9 +10,11 @@ export PYTHONPATH
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN{FS=":.*?## "}{printf "  \033[36m%-12s\033[0m %s\n", $$1, $$2}'
 
-setup:  ## Create the venv, install dependencies and spaCy models
+setup:  ## Create the venv and install everything needed for development
 	uv venv --python 3.11 .venv
-	.venv/bin/uv pip install -r requirements.txt || uv pip install --python .venv -r requirements.txt
+	uv pip install --python .venv -r requirements-dev.txt
+	# The hosted demo runs the small spaCy models; locally we install the more
+	# accurate `md` ones too and the detector prefers whichever is present.
 	$(PY) -m spacy download en_core_web_md
 	$(PY) -m spacy download es_core_news_md
 

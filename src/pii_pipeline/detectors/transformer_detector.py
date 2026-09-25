@@ -13,6 +13,7 @@ Two details matter more than the model weights themselves:
 from __future__ import annotations
 
 import logging
+import os
 from pathlib import Path
 from typing import Any
 
@@ -24,6 +25,12 @@ from .base import normalize_entities, resolve_overlaps
 logger = logging.getLogger(__name__)
 
 DEFAULT_MODEL_DIR = Path("models/distilbert-pii-ner/final")
+
+#: Hugging Face repo used when no local checkpoint is present. The trained
+#: weights are ~500 MB and stay out of git; the hosted demo pulls them from the
+#: Hub instead, so the deployed app runs the same ensemble as a local checkout
+#: rather than silently degrading to the rule baseline.
+DEFAULT_HUB_REPO = os.environ.get("PII_MODEL_REPO", "")
 
 
 def _softmax(logits: np.ndarray) -> np.ndarray:
@@ -44,8 +51,10 @@ class TransformerDetector:
         stride: int = 64,
         device: str | None = None,
         min_score: float = 0.30,
+        hub_repo: str = DEFAULT_HUB_REPO,
     ):
         self.model_dir = Path(model_dir)
+        self.hub_repo = hub_repo
         self.max_length = max_length
         self.stride = stride
         self.min_score = min_score
@@ -68,15 +77,28 @@ class TransformerDetector:
                 if torch.cuda.is_available()
                 else "cpu"
             )
-        self._tokenizer = AutoTokenizer.from_pretrained(str(self.model_dir))
-        self._model = AutoModelForTokenClassification.from_pretrained(str(self.model_dir))
+        source = self.source
+        if source is None:
+            raise FileNotFoundError(
+                f"no model at {self.model_dir} and no Hugging Face repo configured "
+                "(set PII_MODEL_REPO)"
+            )
+        self._tokenizer = AutoTokenizer.from_pretrained(source)
+        self._model = AutoModelForTokenClassification.from_pretrained(source)
         self._model.to(self._device).eval()
         self._id2label = self._model.config.id2label
-        logger.info("loaded %s on %s", self.model_dir, self._device)
+        logger.info("loaded %s on %s", source, self._device)
+
+    @property
+    def source(self) -> str | None:
+        """Where the weights come from: the local checkpoint, else the Hub repo."""
+        if (self.model_dir / "config.json").exists():
+            return str(self.model_dir)
+        return self.hub_repo or None
 
     @property
     def is_available(self) -> bool:
-        return (self.model_dir / "config.json").exists()
+        return self.source is not None
 
     # -- decoding ----------------------------------------------------------
     def _spans_from_window(

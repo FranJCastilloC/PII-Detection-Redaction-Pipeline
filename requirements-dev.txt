@@ -1,0 +1,17 @@
+# Development dependencies: training, evaluation, reporting, notebooks, tests.
+# Not installed on the hosted demo, which only runs inference.
+-r requirements.txt
+
+datasets==5.0.1
+accelerate==1.15.0
+seqeval==1.2.2
+pyarrow==25.0.1
+PyYAML==6.0.3
+Faker==40.39.0
+matplotlib==3.11.2
+tabulate==0.10.0
+tqdm==4.70.1
+pytest==9.1.1
+ipykernel==7.3.0
+nbformat==5.11.1
+nbconvert==7.17.1

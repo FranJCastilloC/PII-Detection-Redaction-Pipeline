@@ -1,28 +1,30 @@
-# Generado desde el entorno verificado (Python 3.11.13, macOS arm64).
-# Instalación:  uv venv --python 3.11 .venv && uv pip install -r requirements.txt
+# Runtime dependencies: everything the pipeline and the Streamlit demo need.
+# Pinned from the verified environment (Python 3.11.13, macOS arm64).
+#
+# Install:  uv venv --python 3.11 .venv && uv pip install -r requirements.txt
+# For training, evaluation and notebooks also install requirements-dev.txt.
 
+# --- inference ---
 torch==2.14.0
 transformers==5.17.0
-datasets==5.0.1
-accelerate==1.15.0
+huggingface-hub==1.32.0
+
+# --- rule engine and statistical NER ---
 presidio-analyzer==2.2.364
 presidio-anonymizer==2.2.364
 spacy==3.8.16
-Faker==40.39.0
-seqeval==1.2.2
+
+# spaCy models must be declared here, not installed with `spacy download`:
+# hosting platforms only run `pip install -r requirements.txt`. Without them
+# Presidio tries to download a model at request time and the request hangs.
+# The small models keep the hosted demo inside its memory budget; a local
+# `make setup` additionally installs the more accurate `md` ones and the
+# detector prefers whichever is present.
+en_core_web_sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl
+es_core_news_sm @ https://github.com/explosion/spacy-models/releases/download/es_core_news_sm-3.8.0/es_core_news_sm-3.8.0-py3-none-any.whl
+
+# --- scoring, data handling and UI ---
 scikit-learn==1.9.1
 pandas==3.0.6
 numpy==2.4.6
-matplotlib==3.11.2
 streamlit==1.64.0
-pyarrow==25.0.1
-PyYAML==6.0.3
-tqdm==4.70.1
-pytest==9.1.1
-tabulate==0.10.0
-ipykernel==7.3.0
-nbformat==5.11.1
-
-# Modelos de spaCy que Presidio necesita (descargar tras instalar):
-#   python -m spacy download en_core_web_md
-#   python -m spacy download es_core_news_md

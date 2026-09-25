@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import html
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -13,6 +14,20 @@ import streamlit as st
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
+# The trained weights are ~500 MB and stay out of git, so a hosted deployment
+# pulls them from the Hugging Face Hub instead. This must be set before the
+# package is imported, because the detector reads it at import time.
+_hub_repo = os.environ.get("PII_MODEL_REPO", "")
+if not _hub_repo:
+    try:
+        _hub_repo = st.secrets.get("PII_MODEL_REPO", "")
+    except Exception:
+        _hub_repo = ""
+if _hub_repo:
+    os.environ["PII_MODEL_REPO"] = _hub_repo
+
+from pii_pipeline.detectors.presidio_detector import PresidioDetector  # noqa: E402
+from pii_pipeline.detectors.transformer_detector import TransformerDetector  # noqa: E402
 from pii_pipeline.entities import TYPE_COLORS  # noqa: E402
 from pii_pipeline.pipeline import PIIPipeline, detect_language  # noqa: E402
 from pii_pipeline.review_queue import Decision, ReviewPolicy, ReviewStatus, ReviewQueue  # noqa: E402
@@ -99,15 +114,36 @@ st.caption(
 with st.sidebar:
     st.header("Settings")
 
-    model_ready = (MODEL_DIR / "config.json").exists()
+    model_ready = TransformerDetector(MODEL_DIR, hub_repo=_hub_repo).is_available
+    presidio_ready = PresidioDetector().is_available
+
+    options = ["Ensemble (rules + Presidio + model)", "Baseline only (rules + Presidio)", "Rules only"]
     engine_choice = st.radio(
         "Detection engine",
-        ["Ensemble (rules + Presidio + model)", "Baseline only (rules + Presidio)", "Rules only"],
-        index=0 if model_ready else 1,
+        options,
+        index=0 if model_ready else (1 if presidio_ready else 2),
         help="The ensemble combines all three detectors and fuses their scores.",
     )
+
+    # Say plainly what is actually running. A demo that quietly drops to the
+    # weakest configuration misrepresents the project's headline numbers.
     if not model_ready:
-        st.warning("No fine-tuned model found; falling back to the baseline.")
+        st.warning(
+            "Fine-tuned model unavailable, so the ensemble is not running. "
+            "Set `PII_MODEL_REPO` to a Hugging Face repo, or train locally with "
+            "`make train`."
+        )
+    if not presidio_ready:
+        st.warning(
+            "spaCy models are not installed, so Presidio contributes nothing. "
+            "Install them with `python -m spacy download es_core_news_sm`."
+        )
+    st.caption(
+        "Live engines: rules "
+        f"{'· Presidio ' if presidio_ready else ''}"
+        f"{'· fine-tuned model' if model_ready else ''}"
+        + (f"  \nmodel: `{_hub_repo}`" if model_ready and _hub_repo and not (MODEL_DIR / 'config.json').exists() else "")
+    )
     engines = {
         "Ensemble (rules + Presidio + model)": ("rules", "presidio", "model"),
         "Baseline only (rules + Presidio)": ("rules", "presidio"),

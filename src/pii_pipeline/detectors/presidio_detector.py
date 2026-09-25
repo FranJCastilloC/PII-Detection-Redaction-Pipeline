@@ -15,11 +15,32 @@ from .base import normalize_entities, resolve_overlaps
 
 logger = logging.getLogger(__name__)
 
-#: spaCy pipelines backing each language.
-SPACY_MODELS: dict[str, str] = {
-    "en": "en_core_web_md",
-    "es": "es_core_news_md",
+#: spaCy pipelines backing each language, best first. The ``md`` models are
+#: noticeably better at PERSON/LOCATION; the ``sm`` ones are ~12 MB instead of
+#: ~50 MB and exist so the hosted demo fits inside a 1 GB container. Whichever
+#: is actually installed wins, so the same code runs locally and in the cloud.
+SPACY_MODELS: dict[str, tuple[str, ...]] = {
+    "en": ("en_core_web_md", "en_core_web_sm"),
+    "es": ("es_core_news_md", "es_core_news_sm"),
 }
+
+
+def resolve_spacy_model(lang: str) -> str:
+    """Return the best spaCy model for ``lang`` that is actually installed.
+
+    Presidio will otherwise try to *download* a missing model at request time,
+    which on a hosted container blocks the request forever instead of failing.
+    """
+    import importlib.util
+
+    candidates = SPACY_MODELS.get(lang, ())
+    for name in candidates:
+        if importlib.util.find_spec(name) is not None:
+            return name
+    raise LookupError(
+        f"no spaCy model installed for {lang!r}; expected one of {candidates}. "
+        f"Install with: python -m spacy download {candidates[0]}"
+    )
 
 #: Presidio recogniser label -> project taxonomy. ``None`` means "drop".
 PRESIDIO_LABEL_MAP: dict[str, str | None] = {
@@ -79,7 +100,7 @@ class PresidioDetector:
             configuration = {
                 "nlp_engine_name": "spacy",
                 "models": [
-                    {"lang_code": lang, "model_name": SPACY_MODELS[lang]}
+                    {"lang_code": lang, "model_name": resolve_spacy_model(lang)}
                     for lang in self.languages
                 ],
             }
@@ -88,6 +109,16 @@ class PresidioDetector:
                 nlp_engine=nlp_engine, supported_languages=list(self.languages)
             )
         return self._analyzer
+
+    @property
+    def is_available(self) -> bool:
+        """True when every language has a usable spaCy model installed."""
+        try:
+            for lang in self.languages:
+                resolve_spacy_model(lang)
+        except LookupError:
+            return False
+        return True
 
     # -- main --------------------------------------------------------------
     def detect(self, text: str, lang: str = "es") -> list[PIIEntity]:

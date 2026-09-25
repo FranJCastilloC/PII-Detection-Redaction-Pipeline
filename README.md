@@ -1,5 +1,9 @@
 # PII Detection & Redaction Pipeline for Business Documents
 
+[**Live demo**](https://franjcastilloc-pii-detection-redaction--appstreamlit-app-cy5qbr.streamlit.app/) ·
+[Model on Hugging Face](https://huggingface.co/FranJCastilloC/distilbert-pii-ner-es-en) ·
+[Results](#results)
+
 End-to-end system that takes business documents in **Spanish and English** — invoices, contracts,
 emails, support tickets and onboarding forms — detects the personal data (PII) in them,
 **redacts** it, assigns a **calibrated confidence score** to every detection, and routes the
@@ -283,7 +287,9 @@ markers.)
 
 ### Requirements
 
-Python 3.11 and [`uv`](https://github.com/astral-sh/uv). Tested on macOS (Apple Silicon, MPS); runs
+`requirements.txt` holds what inference needs; `requirements-dev.txt` adds
+training, evaluation, reporting and notebooks. Python 3.11 and
+[`uv`](https://github.com/astral-sh/uv). Tested on macOS (Apple Silicon, MPS); runs
 the same on CPU or CUDA.
 
 ### Install
@@ -315,6 +321,13 @@ Equivalent to, in order:
 | `make test` | pytest suite | ~1 s |
 
 ### Interactive demo
+
+A hosted instance runs at
+[franjcastilloc-pii-detection-redaction.streamlit.app](https://franjcastilloc-pii-detection-redaction--appstreamlit-app-cy5qbr.streamlit.app/).
+It pulls the fine-tuned weights from the Hugging Face Hub, since they are too
+large for git, and runs the small spaCy models to stay inside its memory budget.
+
+To run it locally:
 
 ```bash
 make app
