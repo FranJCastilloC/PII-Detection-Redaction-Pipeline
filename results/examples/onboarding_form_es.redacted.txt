@@ -1,0 +1,15 @@
+FORMULARIO DE ALTA DE CLIENTE
+Referencia interna: [DIRECCION]-[DIRECCION]
+
+Nombre y apellidos: [NOMBRE]
+Fecha de nacimiento: [FECHA_NACIMIENTO]
+Documento de identidad: [IDENTIFICACION]
+Dirección: [DIRECCION]
+Ciudad: [DIRECCION]    Código postal: [DIRECCION]
+Teléfono móvil: [TELEFONO]
+Correo electrónico: [EMAIL]
+Cuenta para domiciliación: [CUENTA_BANCARIA]
+Usuario deseado: [USUARIO]
+Contraseña provisional: [CREDENCIAL]
+
+Declaro que los datos son veraces y autorizo su tratamiento conforme al RGPD.

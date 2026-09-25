@@ -1,0 +1,18 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+.DS_Store
+
+# Datos y artefactos pesados: se regeneran con `make all`
+data/raw/
+data/processed/
+data/*.sqlite
+data/*.jsonl
+models/
+!models/.gitkeep
+
+# El corpus sintético y los resultados sí se versionan: son el entregable
+!data/synthetic/
+!data/synthetic/*.jsonl

@@ -1,0 +1,14 @@
+De: [EMAIL]
+Para: [EMAIL]
+Asunto: Confirmación de su pedido ORD-[IDENTIFICACION]
+
+Estimado/a Raúl [NOMBRE]:
+
+Le confirmamos que su pedido ORD-[IDENTIFICACION] ha sido procesado. El envío se realizará a Ampliación Niger 741 374, [DIRECCION] los bajos.
+
+Hemos registrado el cargo en la tarjeta terminada en [TARJETA] por importe de 4119,20 EUR.
+
+Si necesita modificar el envío, llámenos al [IDENTIFICACION] indicando su número de cliente.
+
+Un cordial saludo,
+[DIRECCION], [DIRECCION] y [DIRECCION] al cliente

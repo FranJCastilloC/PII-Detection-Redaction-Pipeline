@@ -1,0 +1,511 @@
+{
+  "document_id": "synth-onboarding_form-en-0009",
+  "language": "en",
+  "stats": {
+    "n_entities": 12,
+    "n_auto_redacted": 8,
+    "n_review": 4,
+    "n_discarded": 0,
+    "review_rate": 0.3333,
+    "by_type": {
+      "ADDRESS": 4,
+      "PERSON": 1,
+      "DATE_OF_BIRTH": 1,
+      "GOV_ID": 1,
+      "PHONE": 1,
+      "EMAIL": 1,
+      "BANK_ACCOUNT": 1,
+      "USERNAME": 1,
+      "CREDENTIAL": 1
+    },
+    "detections_per_engine": {
+      "rules": 7,
+      "presidio": 6,
+      "model": 13
+    },
+    "engines": [
+      "rules",
+      "presidio",
+      "model"
+    ],
+    "redaction_mode": "mask"
+  },
+  "leaks": [],
+  "entities": [
+    {
+      "text": "ORD-476198",
+      "type": "ADDRESS",
+      "start": 45,
+      "end": 55,
+      "score": 0.9476759775796249,
+      "source": "model",
+      "metadata": {
+        "n_tokens": 6,
+        "min_token_prob": 0.686,
+        "mean_margin": 0.5987,
+        "detectors": [
+          "model"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.7626
+        },
+        "raw_score": 0.7626,
+        "calibration_group": "model|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "review",
+        "decision_reasons": [
+          "only model detected it"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "Stephanie Arnold",
+      "type": "PERSON",
+      "start": 68,
+      "end": 84,
+      "score": 0.9835984125733376,
+      "source": "model+presidio+rules",
+      "metadata": {
+        "presidio_label": "PERSON",
+        "detectors": [
+          "model",
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 3,
+        "agreement": true,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.7892,
+          "rules": 0.75,
+          "presidio": 0.85
+        },
+        "raw_score": 0.9836,
+        "calibration_group": "model+presidio+rules|PERSON",
+        "calibrated": true,
+        "group_calibrated": false,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    },
+    {
+      "text": "12/15/1977",
+      "type": "DATE_OF_BIRTH",
+      "start": 100,
+      "end": 110,
+      "score": 0.7479744815732214,
+      "source": "model+presidio+rules",
+      "metadata": {
+        "n_tokens": 5,
+        "min_token_prob": 0.9703,
+        "mean_margin": 0.9577,
+        "detectors": [
+          "model",
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 2,
+        "agreement": true,
+        "conflicting_types": [
+          "DATE_TIME"
+        ],
+        "raw_scores": {
+          "rules": 0.9,
+          "presidio": 0.95,
+          "model": 0.973
+        },
+        "raw_score": 0.748,
+        "calibration_group": "model+presidio+rules|DATE_OF_BIRTH",
+        "calibrated": true,
+        "group_calibrated": false,
+        "decision": "review",
+        "decision_reasons": [
+          "type conflict with ['DATE_TIME']",
+          "score 0.75 < 0.9"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "ZZ 464008 T",
+      "type": "GOV_ID",
+      "start": 130,
+      "end": 141,
+      "score": 0.9648857633514452,
+      "source": "model+presidio",
+      "metadata": {
+        "n_tokens": 6,
+        "min_token_prob": 0.6808,
+        "mean_margin": 0.8121,
+        "detectors": [
+          "model",
+          "presidio"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [
+          "DATE_TIME"
+        ],
+        "raw_scores": {
+          "model": 0.8915,
+          "presidio": 0.85
+        },
+        "raw_score": 0.6686,
+        "calibration_group": "model+presidio|GOV_ID",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "review",
+        "decision_reasons": [
+          "type conflict with ['DATE_TIME']"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "6 Heather Harbors",
+      "type": "ADDRESS",
+      "start": 151,
+      "end": 168,
+      "score": 0.98375204956251,
+      "source": "model",
+      "metadata": {
+        "n_tokens": 4,
+        "min_token_prob": 0.9015,
+        "mean_margin": 0.9227,
+        "detectors": [
+          "model"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.9497
+        },
+        "raw_score": 0.9497,
+        "calibration_group": "model|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    },
+    {
+      "text": "Nicolaburgh",
+      "type": "ADDRESS",
+      "start": 175,
+      "end": 186,
+      "score": 0.9941898496983362,
+      "source": "model",
+      "metadata": {
+        "n_tokens": 2,
+        "min_token_prob": 0.9884,
+        "mean_margin": 0.9824,
+        "detectors": [
+          "model"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.9886
+        },
+        "raw_score": 0.9886,
+        "calibration_group": "model|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    },
+    {
+      "text": "CH8 5TX",
+      "type": "ADDRESS",
+      "start": 200,
+      "end": 207,
+      "score": 0.9832427803405278,
+      "source": "model",
+      "metadata": {
+        "n_tokens": 5,
+        "min_token_prob": 0.9324,
+        "mean_margin": 0.9142,
+        "detectors": [
+          "model"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.9475
+        },
+        "raw_score": 0.9475,
+        "calibration_group": "model|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    },
+    {
+      "text": "0118 496 0550",
+      "type": "PHONE",
+      "start": 222,
+      "end": 235,
+      "score": 0.9956440893532404,
+      "source": "model+presidio+rules",
+      "metadata": {
+        "n_tokens": 5,
+        "min_token_prob": 0.869,
+        "mean_margin": 0.8585,
+        "detectors": [
+          "model",
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 3,
+        "agreement": true,
+        "conflicting_types": [],
+        "raw_scores": {
+          "rules": 0.9,
+          "presidio": 0.75,
+          "model": 0.9178
+        },
+        "raw_score": 0.9979,
+        "calibration_group": "model+presidio+rules|PHONE",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    },
+    {
+      "text": "sarnold@martin-smith.net",
+      "type": "EMAIL",
+      "start": 251,
+      "end": 275,
+      "score": 0.98,
+      "source": "model+presidio+rules",
+      "metadata": {
+        "presidio_label": "EMAIL_ADDRESS",
+        "detectors": [
+          "model",
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 3,
+        "agreement": true,
+        "conflicting_types": [],
+        "raw_scores": {
+          "rules": 0.97,
+          "presidio": 1.0,
+          "model": 0.9916
+        },
+        "raw_score": 1.0,
+        "calibration_group": "model+presidio+rules|EMAIL",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    },
+    {
+      "text": "GB96WDIR65465925517329",
+      "type": "BANK_ACCOUNT",
+      "start": 298,
+      "end": 320,
+      "score": 0.75,
+      "source": "model+presidio+rules",
+      "metadata": {
+        "rule": "iban",
+        "checksum": "iban",
+        "checksum_passed": true,
+        "context_keyword": "account",
+        "detectors": [
+          "model",
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 2,
+        "agreement": true,
+        "conflicting_types": [
+          "GOV_ID"
+        ],
+        "raw_scores": {
+          "rules": 0.99,
+          "presidio": 1.0,
+          "model": 0.9795
+        },
+        "raw_score": 0.75,
+        "calibration_group": "model+presidio+rules|BANK_ACCOUNT",
+        "calibrated": true,
+        "group_calibrated": false,
+        "decision": "review",
+        "decision_reasons": [
+          "type conflict with ['GOV_ID']",
+          "high-risk BANK_ACCOUNT below 0.95 confidence",
+          "score 0.75 < 0.9"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "sarnold80",
+      "type": "USERNAME",
+      "start": 341,
+      "end": 350,
+      "score": 0.9981556756309137,
+      "source": "model+rules",
+      "metadata": {
+        "n_tokens": 4,
+        "min_token_prob": 0.9867,
+        "mean_margin": 0.9859,
+        "detectors": [
+          "model",
+          "rules"
+        ],
+        "n_agreeing": 2,
+        "agreement": true,
+        "conflicting_types": [],
+        "raw_scores": {
+          "rules": 0.82,
+          "model": 0.9898
+        },
+        "raw_score": 0.9982,
+        "calibration_group": "model+rules|USERNAME",
+        "calibrated": true,
+        "group_calibrated": false,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    },
+    {
+      "text": "&4L@!E*b48V3",
+      "type": "CREDENTIAL",
+      "start": 371,
+      "end": 383,
+      "score": 0.9892263113048836,
+      "source": "model+rules",
+      "metadata": {
+        "rule": "password_labeled",
+        "detectors": [
+          "model",
+          "rules"
+        ],
+        "n_agreeing": 2,
+        "agreement": true,
+        "conflicting_types": [],
+        "raw_scores": {
+          "rules": 0.93,
+          "model": 0.8461
+        },
+        "raw_score": 0.9892,
+        "calibration_group": "model+rules|CREDENTIAL",
+        "calibrated": true,
+        "group_calibrated": false,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    }
+  ],
+  "review_items": [
+    {
+      "document_id": "synth-onboarding_form-en-0009",
+      "entity_type": "ADDRESS",
+      "text": "ORD-476198",
+      "start": 45,
+      "end": 55,
+      "score": 0.9477,
+      "reasons": [
+        "only model detected it"
+      ],
+      "context": "CUSTOMER ONBOARDING FORM Internal reference: <<ORD-476198>>  Full name: Stephanie Arnold Date of birth: 12/15/1977 Iden...",
+      "source": "model",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-onboarding_form-en-0009",
+      "entity_type": "DATE_OF_BIRTH",
+      "text": "12/15/1977",
+      "start": 100,
+      "end": 110,
+      "score": 0.748,
+      "reasons": [
+        "type conflict with ['DATE_TIME']",
+        "score 0.75 < 0.9"
+      ],
+      "context": "...nce: ORD-476198  Full name: Stephanie Arnold Date of birth: <<12/15/1977>> Identity document: ZZ 464008 T Address: 6 Heather Harbors C...",
+      "source": "model+presidio+rules",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-onboarding_form-en-0009",
+      "entity_type": "GOV_ID",
+      "text": "ZZ 464008 T",
+      "start": 130,
+      "end": 141,
+      "score": 0.9649,
+      "reasons": [
+        "type conflict with ['DATE_TIME']"
+      ],
+      "context": "...ephanie Arnold Date of birth: 12/15/1977 Identity document: <<ZZ 464008 T>> Address: 6 Heather Harbors City: Nicolaburgh    ZIP code: C...",
+      "source": "model+presidio",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-onboarding_form-en-0009",
+      "entity_type": "BANK_ACCOUNT",
+      "text": "GB96WDIR65465925517329",
+      "start": 298,
+      "end": 320,
+      "score": 0.75,
+      "reasons": [
+        "type conflict with ['GOV_ID']",
+        "high-risk BANK_ACCOUNT below 0.95 confidence",
+        "score 0.75 < 0.9"
+      ],
+      "context": "...ail address: sarnold@martin-smith.net Direct debit account: <<GB96WDIR65465925517329>> Requested username: sarnold80 Temporary password: &4L@!E*b4...",
+      "source": "model+presidio+rules",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    }
+  ]
+}

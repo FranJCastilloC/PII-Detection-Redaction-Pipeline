@@ -1,0 +1,482 @@
+{
+  "document_id": "synth-support_ticket-es-0006",
+  "language": "es",
+  "stats": {
+    "n_entities": 11,
+    "n_auto_redacted": 4,
+    "n_review": 4,
+    "n_discarded": 3,
+    "review_rate": 0.3636,
+    "by_type": {
+      "PERSON": 2,
+      "ADDRESS": 1,
+      "EMAIL": 1,
+      "USERNAME": 1,
+      "PHONE": 1,
+      "CREDENTIAL": 1,
+      "IP_ADDRESS": 1,
+      "DATE_TIME": 1,
+      "GOV_ID": 1,
+      "DATE_OF_BIRTH": 1
+    },
+    "detections_per_engine": {
+      "rules": 4,
+      "presidio": 9,
+      "model": 12
+    },
+    "engines": [
+      "rules",
+      "presidio",
+      "model"
+    ],
+    "redaction_mode": "mask"
+  },
+  "leaks": [],
+  "entities": [
+    {
+      "text": "Baja",
+      "type": "ADDRESS",
+      "start": 39,
+      "end": 43,
+      "score": 0.0352937537526572,
+      "source": "presidio",
+      "metadata": {
+        "presidio_label": "LOCATION",
+        "detectors": [
+          "presidio"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "presidio": 0.85
+        },
+        "raw_score": 0.85,
+        "calibration_group": "presidio|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "discard",
+        "decision_reasons": [
+          "score 0.04 < 0.5"
+        ]
+      },
+      "decision": "discard"
+    },
+    {
+      "text": "Menchaca",
+      "type": "PERSON",
+      "start": 86,
+      "end": 94,
+      "score": 0.9581124889728371,
+      "source": "model+presidio",
+      "metadata": {
+        "n_tokens": 3,
+        "min_token_prob": 0.8908,
+        "mean_margin": 0.8591,
+        "detectors": [
+          "model",
+          "presidio"
+        ],
+        "n_agreeing": 2,
+        "agreement": true,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.9215,
+          "presidio": 0.85
+        },
+        "raw_score": 0.9882,
+        "calibration_group": "model+presidio|PERSON",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    },
+    {
+      "text": "mmenchaca@rincon-najera.org",
+      "type": "EMAIL",
+      "start": 96,
+      "end": 123,
+      "score": 0.98,
+      "source": "model+presidio+rules",
+      "metadata": {
+        "presidio_label": "EMAIL_ADDRESS",
+        "suppressed": [
+          {
+            "type": "PERSON",
+            "start": 96,
+            "end": 123,
+            "score": 0.85,
+            "source": "presidio"
+          }
+        ],
+        "detectors": [
+          "model",
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 3,
+        "agreement": true,
+        "conflicting_types": [],
+        "raw_scores": {
+          "rules": 0.97,
+          "presidio": 1.0,
+          "model": 0.9786
+        },
+        "raw_score": 1.0,
+        "calibration_group": "model+presidio+rules|EMAIL",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    },
+    {
+      "text": "mmenchaca53",
+      "type": "USERNAME",
+      "start": 151,
+      "end": 162,
+      "score": 0.9657907997283487,
+      "source": "model",
+      "metadata": {
+        "n_tokens": 5,
+        "min_token_prob": 0.9751,
+        "mean_margin": 0.9701,
+        "detectors": [
+          "model"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.9809
+        },
+        "raw_score": 0.9809,
+        "calibration_group": "model|USERNAME",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "review",
+        "decision_reasons": [
+          "only model detected it"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "8",
+      "type": "PHONE",
+      "start": 195,
+      "end": 196,
+      "score": 0.4376639574766159,
+      "source": "model+presidio",
+      "metadata": {
+        "n_tokens": 1,
+        "min_token_prob": 0.5836,
+        "mean_margin": 0.2228,
+        "detectors": [
+          "model",
+          "presidio"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [
+          "GOV_ID"
+        ],
+        "raw_scores": {
+          "model": 0.5836,
+          "presidio": 0.4
+        },
+        "raw_score": 0.4377,
+        "calibration_group": "model+presidio|PHONE",
+        "calibrated": true,
+        "group_calibrated": false,
+        "decision": "discard",
+        "decision_reasons": [
+          "score 0.44 < 0.5"
+        ]
+      },
+      "decision": "discard"
+    },
+    {
+      "text": "z1Umoo#9_2xV",
+      "type": "CREDENTIAL",
+      "start": 290,
+      "end": 302,
+      "score": 0.7231405621659647,
+      "source": "model+presidio",
+      "metadata": {
+        "n_tokens": 10,
+        "min_token_prob": 0.9025,
+        "mean_margin": 0.9399,
+        "detectors": [
+          "model",
+          "presidio"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [
+          "PERSON"
+        ],
+        "raw_scores": {
+          "presidio": 0.85,
+          "model": 0.9642
+        },
+        "raw_score": 0.7231,
+        "calibration_group": "model+presidio|CREDENTIAL",
+        "calibrated": true,
+        "group_calibrated": false,
+        "decision": "review",
+        "decision_reasons": [
+          "type conflict with ['PERSON']",
+          "high-risk CREDENTIAL below 0.95 confidence",
+          "score 0.72 < 0.9"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "24.81.126.238",
+      "type": "IP_ADDRESS",
+      "start": 367,
+      "end": 380,
+      "score": 0.9997856247882556,
+      "source": "model+presidio+rules",
+      "metadata": {
+        "n_tokens": 7,
+        "min_token_prob": 0.974,
+        "mean_margin": 0.9896,
+        "detectors": [
+          "model",
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 3,
+        "agreement": true,
+        "conflicting_types": [],
+        "raw_scores": {
+          "rules": 0.95,
+          "presidio": 0.95,
+          "model": 0.993
+        },
+        "raw_score": 1.0,
+        "calibration_group": "model+presidio+rules|IP_ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    },
+    {
+      "text": "04/09/2026",
+      "type": "DATE_TIME",
+      "start": 384,
+      "end": 394,
+      "score": 0.9860560391861114,
+      "source": "model+presidio+rules",
+      "metadata": {
+        "rule": "date_numeric",
+        "detectors": [
+          "model",
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 3,
+        "agreement": true,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.7676,
+          "rules": 0.85,
+          "presidio": 0.6
+        },
+        "raw_score": 0.9861,
+        "calibration_group": "model+presidio+rules|DATE_TIME",
+        "calibrated": true,
+        "group_calibrated": false,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    },
+    {
+      "text": "77799057300",
+      "type": "GOV_ID",
+      "start": 443,
+      "end": 454,
+      "score": 0.958822098624061,
+      "source": "model",
+      "metadata": {
+        "n_tokens": 6,
+        "min_token_prob": 0.982,
+        "mean_margin": 0.9746,
+        "detectors": [
+          "model"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.9859
+        },
+        "raw_score": 0.9859,
+        "calibration_group": "model|GOV_ID",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "review",
+        "decision_reasons": [
+          "only model detected it"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "04/02/1991",
+      "type": "DATE_OF_BIRTH",
+      "start": 478,
+      "end": 488,
+      "score": 0.7268891224828664,
+      "source": "model+presidio+rules",
+      "metadata": {
+        "rule": "date_numeric",
+        "dob_context": "nacimiento",
+        "detectors": [
+          "model",
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 2,
+        "agreement": true,
+        "conflicting_types": [
+          "DATE_TIME"
+        ],
+        "raw_scores": {
+          "rules": 0.9,
+          "presidio": 0.6,
+          "model": 0.6919
+        },
+        "raw_score": 0.7269,
+        "calibration_group": "model+presidio+rules|DATE_OF_BIRTH",
+        "calibrated": true,
+        "group_calibrated": false,
+        "decision": "review",
+        "decision_reasons": [
+          "type conflict with ['DATE_TIME']",
+          "score 0.73 < 0.9"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "TCK-22267",
+      "type": "PERSON",
+      "start": 526,
+      "end": 535,
+      "score": 0.006319165658595732,
+      "source": "presidio",
+      "metadata": {
+        "presidio_label": "PERSON",
+        "detectors": [
+          "presidio"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "presidio": 0.85
+        },
+        "raw_score": 0.85,
+        "calibration_group": "presidio|PERSON",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "discard",
+        "decision_reasons": [
+          "score 0.01 < 0.5"
+        ]
+      },
+      "decision": "discard"
+    }
+  ],
+  "review_items": [
+    {
+      "document_id": "synth-support_ticket-es-0006",
+      "entity_type": "USERNAME",
+      "text": "mmenchaca53",
+      "start": 151,
+      "end": 162,
+      "score": 0.9658,
+      "reasons": [
+        "only model detected it"
+      ],
+      "context": "...aca (mmenchaca@rincon-najera.org) Usuario de la plataforma: <<mmenchaca53>> Teléfono de contacto: 08362361078  DESCRIPCIÓN El cliente n...",
+      "source": "model",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-support_ticket-es-0006",
+      "entity_type": "CREDENTIAL",
+      "text": "z1Umoo#9_2xV",
+      "start": 290,
+      "end": 302,
+      "score": 0.7231,
+      "reasons": [
+        "type conflict with ['PERSON']",
+        "high-risk CREDENTIAL below 0.95 confidence",
+        "score 0.72 < 0.9"
+      ],
+      "context": "...acceder a su cuenta. Indica que restableció la contraseña a <<z1Umoo#9_2xV>> y aun así recibe un error. Último acceso registrado desde l...",
+      "source": "model+presidio",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-support_ticket-es-0006",
+      "entity_type": "GOV_ID",
+      "text": "77799057300",
+      "start": 443,
+      "end": 454,
+      "score": 0.9588,
+      "reasons": [
+        "only model detected it"
+      ],
+      "context": "... 04/09/2026.  VERIFICACIÓN DE IDENTIDAD Documento aportado: <<77799057300>>   Fecha de nacimiento: 04/02/1991 Nota interna: revisar dup...",
+      "source": "model",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-support_ticket-es-0006",
+      "entity_type": "DATE_OF_BIRTH",
+      "text": "04/02/1991",
+      "start": 478,
+      "end": 488,
+      "score": 0.7269,
+      "reasons": [
+        "type conflict with ['DATE_TIME']",
+        "score 0.73 < 0.9"
+      ],
+      "context": "...IDAD Documento aportado: 77799057300   Fecha de nacimiento: <<04/02/1991>> Nota interna: revisar duplicidad con TCK-22267. ",
+      "source": "model+presidio+rules",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    }
+  ]
+}

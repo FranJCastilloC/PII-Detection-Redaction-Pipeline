@@ -1,0 +1,798 @@
+{
+  "document_id": "synth-contract-es-0002",
+  "language": "es",
+  "stats": {
+    "n_entities": 19,
+    "n_auto_redacted": 3,
+    "n_review": 9,
+    "n_discarded": 7,
+    "review_rate": 0.4737,
+    "by_type": {
+      "ADDRESS": 11,
+      "PERSON": 2,
+      "GOV_ID": 1,
+      "DATE_OF_BIRTH": 1,
+      "EMAIL": 1,
+      "BANK_ACCOUNT": 1,
+      "PHONE": 1,
+      "DATE_TIME": 1
+    },
+    "detections_per_engine": {
+      "rules": 5,
+      "presidio": 17,
+      "model": 9
+    },
+    "engines": [
+      "rules",
+      "presidio",
+      "model"
+    ],
+    "redaction_mode": "mask"
+  },
+  "leaks": [],
+  "entities": [
+    {
+      "text": "D./Dña",
+      "type": "ADDRESS",
+      "start": 77,
+      "end": 83,
+      "score": 0.0352937537526572,
+      "source": "presidio",
+      "metadata": {
+        "presidio_label": "LOCATION",
+        "detectors": [
+          "presidio"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "presidio": 0.85
+        },
+        "raw_score": 0.85,
+        "calibration_group": "presidio|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "discard",
+        "decision_reasons": [
+          "score 0.04 < 0.5"
+        ]
+      },
+      "decision": "discard"
+    },
+    {
+      "text": "Raúl Roque",
+      "type": "PERSON",
+      "start": 85,
+      "end": 95,
+      "score": 0.006319165658595732,
+      "source": "presidio",
+      "metadata": {
+        "presidio_label": "PERSON",
+        "detectors": [
+          "presidio"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "presidio": 0.85
+        },
+        "raw_score": 0.85,
+        "calibration_group": "presidio|PERSON",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "discard",
+        "decision_reasons": [
+          "score 0.01 < 0.5"
+        ]
+      },
+      "decision": "discard"
+    },
+    {
+      "text": "93138386284",
+      "type": "GOV_ID",
+      "start": 120,
+      "end": 131,
+      "score": 0.9477120029727415,
+      "source": "model",
+      "metadata": {
+        "n_tokens": 6,
+        "min_token_prob": 0.9731,
+        "mean_margin": 0.9689,
+        "detectors": [
+          "model"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.9819
+        },
+        "raw_score": 0.9819,
+        "calibration_group": "model|GOV_ID",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "review",
+        "decision_reasons": [
+          "high-risk GOV_ID below 0.95 confidence",
+          "only model detected it"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "18/11/1987",
+      "type": "DATE_OF_BIRTH",
+      "start": 145,
+      "end": 155,
+      "score": 0.7406095249655141,
+      "source": "model+presidio+rules",
+      "metadata": {
+        "rule": "date_numeric",
+        "dob_context": "nacid",
+        "detectors": [
+          "model",
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 2,
+        "agreement": true,
+        "conflicting_types": [
+          "DATE_TIME"
+        ],
+        "raw_scores": {
+          "rules": 0.9,
+          "presidio": 0.6,
+          "model": 0.8748
+        },
+        "raw_score": 0.7406,
+        "calibration_group": "model+presidio+rules|DATE_OF_BIRTH",
+        "calibrated": true,
+        "group_calibrated": false,
+        "decision": "review",
+        "decision_reasons": [
+          "type conflict with ['DATE_TIME']",
+          "score 0.74 < 0.9"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "Privada Reino Unido de Gran Bretaña",
+      "type": "ADDRESS",
+      "start": 172,
+      "end": 207,
+      "score": 0.0352937537526572,
+      "source": "presidio",
+      "metadata": {
+        "presidio_label": "LOCATION",
+        "detectors": [
+          "presidio"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "presidio": 0.85
+        },
+        "raw_score": 0.85,
+        "calibration_group": "presidio|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "discard",
+        "decision_reasons": [
+          "score 0.04 < 0.5"
+        ]
+      },
+      "decision": "discard"
+    },
+    {
+      "text": "Irlanda del Norte",
+      "type": "ADDRESS",
+      "start": 210,
+      "end": 227,
+      "score": 0.8174087034559393,
+      "source": "model+presidio",
+      "metadata": {
+        "presidio_label": "LOCATION",
+        "detectors": [
+          "model",
+          "presidio"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "presidio": 0.85,
+          "model": 0.5962
+        },
+        "raw_score": 0.85,
+        "calibration_group": "model+presidio|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "review",
+        "decision_reasons": [
+          "score 0.82 < 0.9"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "Edif",
+      "type": "ADDRESS",
+      "start": 232,
+      "end": 236,
+      "score": 0.0352937537526572,
+      "source": "presidio",
+      "metadata": {
+        "presidio_label": "LOCATION",
+        "detectors": [
+          "presidio"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "presidio": 0.85
+        },
+        "raw_score": 0.85,
+        "calibration_group": "presidio|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "discard",
+        "decision_reasons": [
+          "score 0.04 < 0.5"
+        ]
+      },
+      "decision": "discard"
+    },
+    {
+      "text": "336",
+      "type": "ADDRESS",
+      "start": 238,
+      "end": 241,
+      "score": 0.8592064671850493,
+      "source": "model",
+      "metadata": {
+        "n_tokens": 1,
+        "min_token_prob": 0.3941,
+        "mean_margin": 0.0046,
+        "detectors": [
+          "model"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.3941
+        },
+        "raw_score": 0.3941,
+        "calibration_group": "model|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "review",
+        "decision_reasons": [
+          "score 0.86 < 0.9",
+          "only model detected it"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "Depto",
+      "type": "ADDRESS",
+      "start": 244,
+      "end": 249,
+      "score": 0.8909919503227541,
+      "source": "model+presidio",
+      "metadata": {
+        "presidio_label": "LOCATION",
+        "detectors": [
+          "model",
+          "presidio"
+        ],
+        "n_agreeing": 2,
+        "agreement": true,
+        "conflicting_types": [],
+        "raw_scores": {
+          "presidio": 0.85,
+          "model": 0.8279
+        },
+        "raw_score": 0.9742,
+        "calibration_group": "model+presidio|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "review",
+        "decision_reasons": [
+          "score 0.89 < 0.9"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "San Antonia",
+      "type": "ADDRESS",
+      "start": 256,
+      "end": 267,
+      "score": 0.8801762897202023,
+      "source": "model+presidio",
+      "metadata": {
+        "presidio_label": "LOCATION",
+        "detectors": [
+          "model",
+          "presidio"
+        ],
+        "n_agreeing": 2,
+        "agreement": true,
+        "conflicting_types": [],
+        "raw_scores": {
+          "presidio": 0.85,
+          "model": 0.7615
+        },
+        "raw_score": 0.9642,
+        "calibration_group": "model+presidio|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "review",
+        "decision_reasons": [
+          "score 0.88 < 0.9"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "D./Dña",
+      "type": "ADDRESS",
+      "start": 328,
+      "end": 334,
+      "score": 0.0352937537526572,
+      "source": "presidio",
+      "metadata": {
+        "presidio_label": "LOCATION",
+        "detectors": [
+          "presidio"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "presidio": 0.85
+        },
+        "raw_score": 0.85,
+        "calibration_group": "presidio|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "discard",
+        "decision_reasons": [
+          "score 0.04 < 0.5"
+        ]
+      },
+      "decision": "discard"
+    },
+    {
+      "text": "Homero Puente",
+      "type": "PERSON",
+      "start": 336,
+      "end": 349,
+      "score": 0.006319165658595732,
+      "source": "presidio",
+      "metadata": {
+        "presidio_label": "PERSON",
+        "detectors": [
+          "presidio"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "presidio": 0.85
+        },
+        "raw_score": 0.85,
+        "calibration_group": "presidio|PERSON",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "discard",
+        "decision_reasons": [
+          "score 0.01 < 0.5"
+        ]
+      },
+      "decision": "discard"
+    },
+    {
+      "text": "Prolongación Norte Sánchez 828 807",
+      "type": "ADDRESS",
+      "start": 368,
+      "end": 402,
+      "score": 0.845915187557475,
+      "source": "model+presidio",
+      "metadata": {
+        "n_tokens": 7,
+        "min_token_prob": 0.8821,
+        "mean_margin": 0.8538,
+        "detectors": [
+          "model",
+          "presidio"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "presidio": 0.85,
+          "model": 0.9151
+        },
+        "raw_score": 0.9151,
+        "calibration_group": "model+presidio|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "review",
+        "decision_reasons": [
+          "score 0.85 < 0.9"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "hpuente@proyectos.com",
+      "type": "EMAIL",
+      "start": 424,
+      "end": 445,
+      "score": 0.98,
+      "source": "model+presidio+rules",
+      "metadata": {
+        "presidio_label": "EMAIL_ADDRESS",
+        "detectors": [
+          "model",
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 3,
+        "agreement": true,
+        "conflicting_types": [],
+        "raw_scores": {
+          "rules": 0.97,
+          "presidio": 1.0,
+          "model": 0.9631
+        },
+        "raw_score": 1.0,
+        "calibration_group": "model+presidio+rules|EMAIL",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    },
+    {
+      "text": "2483",
+      "type": "ADDRESS",
+      "start": 519,
+      "end": 523,
+      "score": 0.9491175473780984,
+      "source": "model",
+      "metadata": {
+        "n_tokens": 2,
+        "min_token_prob": 0.6631,
+        "mean_margin": 0.5814,
+        "suppressed": [
+          {
+            "type": "ADDRESS",
+            "start": 519,
+            "end": 522,
+            "score": 0.6014,
+            "source": "model"
+          }
+        ],
+        "detectors": [
+          "model"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.7703
+        },
+        "raw_score": 0.7703,
+        "calibration_group": "model|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "review",
+        "decision_reasons": [
+          "only model detected it"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "GB43LOZX5513137353799",
+      "type": "BANK_ACCOUNT",
+      "start": 586,
+      "end": 607,
+      "score": 0.7424999999999999,
+      "source": "presidio+rules",
+      "metadata": {
+        "rule": "iban",
+        "checksum": "iban",
+        "checksum_passed": true,
+        "context_keyword": "cuenta",
+        "detectors": [
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [
+          "ADDRESS"
+        ],
+        "raw_scores": {
+          "rules": 0.99,
+          "presidio": 0.85
+        },
+        "raw_score": 0.7425,
+        "calibration_group": "presidio+rules|BANK_ACCOUNT",
+        "calibrated": true,
+        "group_calibrated": false,
+        "decision": "review",
+        "decision_reasons": [
+          "type conflict with ['ADDRESS']",
+          "high-risk BANK_ACCOUNT below 0.95 confidence",
+          "score 0.74 < 0.9"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "280.841.4852",
+      "type": "PHONE",
+      "start": 663,
+      "end": 675,
+      "score": 0.9400000000000001,
+      "source": "presidio+rules",
+      "metadata": {
+        "rule": "phone_labeled",
+        "detectors": [
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 2,
+        "agreement": true,
+        "conflicting_types": [],
+        "raw_scores": {
+          "rules": 0.9,
+          "presidio": 0.4
+        },
+        "raw_score": 0.94,
+        "calibration_group": "presidio+rules|PHONE",
+        "calibrated": true,
+        "group_calibrated": false,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    },
+    {
+      "text": "Vieja Panamá",
+      "type": "ADDRESS",
+      "start": 716,
+      "end": 728,
+      "score": 0.0352937537526572,
+      "source": "presidio",
+      "metadata": {
+        "presidio_label": "LOCATION",
+        "detectors": [
+          "presidio"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "presidio": 0.85
+        },
+        "raw_score": 0.85,
+        "calibration_group": "presidio|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "discard",
+        "decision_reasons": [
+          "score 0.04 < 0.5"
+        ]
+      },
+      "decision": "discard"
+    },
+    {
+      "text": "15/04/2026",
+      "type": "DATE_TIME",
+      "start": 731,
+      "end": 741,
+      "score": 0.94,
+      "source": "presidio+rules",
+      "metadata": {
+        "rule": "date_numeric",
+        "detectors": [
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 2,
+        "agreement": true,
+        "conflicting_types": [],
+        "raw_scores": {
+          "rules": 0.85,
+          "presidio": 0.6
+        },
+        "raw_score": 0.94,
+        "calibration_group": "presidio+rules|DATE_TIME",
+        "calibrated": true,
+        "group_calibrated": false,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    }
+  ],
+  "review_items": [
+    {
+      "document_id": "synth-contract-es-0002",
+      "entity_type": "GOV_ID",
+      "text": "93138386284",
+      "start": 120,
+      "end": 131,
+      "score": 0.9477,
+      "reasons": [
+        "high-risk GOV_ID below 0.95 confidence",
+        "only model detected it"
+      ],
+      "context": "...S  De una parte, D./Dña. Raúl Roque, mayor de edad, con DNI <<93138386284>>, nacido/a el 18/11/1987, y domicilio en Privada Reino Unido...",
+      "source": "model",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-contract-es-0002",
+      "entity_type": "DATE_OF_BIRTH",
+      "text": "18/11/1987",
+      "start": 145,
+      "end": 155,
+      "score": 0.7406,
+      "reasons": [
+        "type conflict with ['DATE_TIME']",
+        "score 0.74 < 0.9"
+      ],
+      "context": "...Raúl Roque, mayor de edad, con DNI 93138386284, nacido/a el <<18/11/1987>>, y domicilio en Privada Reino Unido de Gran Bretaña e Irlan...",
+      "source": "model+presidio+rules",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-contract-es-0002",
+      "entity_type": "ADDRESS",
+      "text": "Irlanda del Norte",
+      "start": 210,
+      "end": 227,
+      "score": 0.8174,
+      "reasons": [
+        "score 0.82 < 0.9"
+      ],
+      "context": ".../1987, y domicilio en Privada Reino Unido de Gran Bretaña e <<Irlanda del Norte>> 539 Edif. 336 , Depto. 338, San Antonia los altos (en adela...",
+      "source": "model+presidio",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-contract-es-0002",
+      "entity_type": "ADDRESS",
+      "text": "336",
+      "start": 238,
+      "end": 241,
+      "score": 0.8592,
+      "reasons": [
+        "score 0.86 < 0.9",
+        "only model detected it"
+      ],
+      "context": "...a Reino Unido de Gran Bretaña e Irlanda del Norte 539 Edif. <<336>> , Depto. 338, San Antonia los altos (en adelante, el ARREND...",
+      "source": "model",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-contract-es-0002",
+      "entity_type": "ADDRESS",
+      "text": "Depto",
+      "start": 244,
+      "end": 249,
+      "score": 0.891,
+      "reasons": [
+        "score 0.89 < 0.9"
+      ],
+      "context": "...o Unido de Gran Bretaña e Irlanda del Norte 539 Edif. 336 , <<Depto>>. 338, San Antonia los altos (en adelante, el ARRENDATARIO)....",
+      "source": "model+presidio",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-contract-es-0002",
+      "entity_type": "ADDRESS",
+      "text": "San Antonia",
+      "start": 256,
+      "end": 267,
+      "score": 0.8802,
+      "reasons": [
+        "score 0.88 < 0.9"
+      ],
+      "context": "...ran Bretaña e Irlanda del Norte 539 Edif. 336 , Depto. 338, <<San Antonia>> los altos (en adelante, el ARRENDATARIO).  Y de otra parte,...",
+      "source": "model+presidio",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-contract-es-0002",
+      "entity_type": "ADDRESS",
+      "text": "Prolongación Norte Sánchez 828 807",
+      "start": 368,
+      "end": 402,
+      "score": 0.8459,
+      "reasons": [
+        "score 0.85 < 0.9"
+      ],
+      "context": "....  Y de otra parte, D./Dña. Homero Puente, con domicilio en <<Prolongación Norte Sánchez 828 807>> y correo electrónico hpuente@proyectos.com (en adelante, el...",
+      "source": "model+presidio",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-contract-es-0002",
+      "entity_type": "ADDRESS",
+      "text": "2483",
+      "start": 519,
+      "end": 523,
+      "score": 0.9491,
+      "reasons": [
+        "only model detected it"
+      ],
+      "context": "... el ARRENDADOR).  CLÁUSULAS  PRIMERA.- El precio se fija en <<2483>>,79 EUR anuales. SEGUNDA.- El pago se domiciliará en la cuen...",
+      "source": "model",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-contract-es-0002",
+      "entity_type": "BANK_ACCOUNT",
+      "text": "GB43LOZX5513137353799",
+      "start": 586,
+      "end": 607,
+      "score": 0.7425,
+      "reasons": [
+        "type conflict with ['ADDRESS']",
+        "high-risk BANK_ACCOUNT below 0.95 confidence",
+        "score 0.74 < 0.9"
+      ],
+      "context": "... EUR anuales. SEGUNDA.- El pago se domiciliará en la cuenta <<GB43LOZX5513137353799>>. TERCERA.- Las notificaciones se dirigirán al teléfono 280....",
+      "source": "presidio+rules",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    }
+  ]
+}

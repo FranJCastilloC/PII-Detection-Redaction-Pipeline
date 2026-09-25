@@ -1,0 +1,11 @@
+test_set,system,system_key,P_exact,R_exact,F1_exact,F1_partial,F1_macro,entity_leakage,over_redaction,docs_per_sec
+ai4privacy,Rules (regex + checksums),rules,0.7556,0.2448,0.3698,0.3929,0.3847,0.7287,0.005325,4340.39
+ai4privacy,Presidio,presidio,0.3648,0.2357,0.2864,0.3222,0.3084,0.6299,0.038417,23.67
+ai4privacy,Baseline (rules + Presidio),baseline_rules_presidio,0.4335,0.3218,0.3694,0.4132,0.4002,0.5489,0.040257,37.25
+ai4privacy,Fine-tuned model,finetuned_model,0.919,0.9226,0.9208,0.9516,0.897,0.0625,0.003287,38.16
+ai4privacy,Ensemble (baseline + model),ensemble,0.7327,0.9012,0.8083,0.8428,0.7586,0.0683,0.039706,21.54
+synthetic_documents,Rules (regex + checksums),rules,0.9368,0.5609,0.7017,0.7343,0.7314,0.4361,0.00024,1537.34
+synthetic_documents,Presidio,presidio,0.5569,0.5722,0.5644,0.6086,0.5291,0.3048,0.045858,30.43
+synthetic_documents,Baseline (rules + Presidio),baseline_rules_presidio,0.6216,0.6857,0.6521,0.712,0.713,0.2448,0.045915,30.4
+synthetic_documents,Fine-tuned model,finetuned_model,0.5042,0.5787,0.5389,0.6506,0.5421,0.3148,0.03538,36.41
+synthetic_documents,Ensemble (baseline + model),ensemble,0.5989,0.807,0.6875,0.765,0.7884,0.1478,0.071115,19.0

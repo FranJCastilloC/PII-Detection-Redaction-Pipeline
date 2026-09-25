@@ -1,0 +1,15 @@
+FORMULARIO DE ALTA DE CLIENTE
+Referencia interna: ORD-517225
+
+Nombre y apellidos: Raquel Ferrández
+Fecha de nacimiento: 04/12/1985
+Documento de identidad: 26670364R
+Dirección: Via de Rosario Sarmiento 546
+Ciudad: Las Palmas    Código postal: 26507
+Teléfono móvil: +34 942 51 23 30
+Correo electrónico: rferrández@gervasio.com
+Cuenta para domiciliación: ES3478720097447379727611
+Usuario deseado: rferrández46
+Contraseña provisional: _(z6mUyOwz0k
+
+Declaro que los datos son veraces y autorizo su tratamiento conforme al RGPD.

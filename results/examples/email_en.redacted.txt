@@ -1,0 +1,15 @@
+From: [EMAIL]
+To: [EMAIL]
+Subject: Your order ORD-636800 is confirmed
+
+Dear Derek Bishop,
+
+We are writing to confirm that order ORD-636800 has been processed. It will be shipped to 9 [NAME], [ADDRESS].
+
+We charged the card ending in [CREDIT_CARD] for [DATE].
+
+To change the delivery address, call us at +44(0)[GOV_ID] with your customer number at hand.
+
+Best regards,
+[NAME]
+Johnston-Bradley - Customer Care

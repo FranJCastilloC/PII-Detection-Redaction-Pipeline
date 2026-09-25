@@ -1,0 +1,15 @@
+CUSTOMER ONBOARDING FORM
+Internal reference: [ADDRESS]
+
+Full name: [NAME]
+Date of birth: [DATE_OF_BIRTH]
+Identity document: [GOV_ID]
+Address: [ADDRESS]
+City: [ADDRESS]    ZIP code: [ADDRESS]
+Mobile phone: [PHONE]
+Email address: [EMAIL]
+Direct debit account: [BANK_ACCOUNT]
+Requested username: [USERNAME]
+Temporary password: [CREDENTIAL]
+
+I certify the information above is accurate and consent to its processing.

@@ -1,0 +1,622 @@
+{
+  "document_id": "synth-invoice-en-0001",
+  "language": "en",
+  "stats": {
+    "n_entities": 15,
+    "n_auto_redacted": 6,
+    "n_review": 5,
+    "n_discarded": 4,
+    "review_rate": 0.3333,
+    "by_type": {
+      "GOV_ID": 4,
+      "ADDRESS": 4,
+      "PERSON": 3,
+      "DATE_TIME": 1,
+      "PHONE": 1,
+      "EMAIL": 1,
+      "BANK_ACCOUNT": 1
+    },
+    "detections_per_engine": {
+      "rules": 5,
+      "presidio": 9,
+      "model": 13
+    },
+    "engines": [
+      "rules",
+      "presidio",
+      "model"
+    ],
+    "redaction_mode": "mask"
+  },
+  "leaks": [],
+  "entities": [
+    {
+      "text": "Lees",
+      "type": "PERSON",
+      "start": 26,
+      "end": 30,
+      "score": 0.14234775398796254,
+      "source": "model",
+      "metadata": {
+        "n_tokens": 2,
+        "min_token_prob": 0.6408,
+        "mean_margin": 0.3747,
+        "detectors": [
+          "model"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.6754
+        },
+        "raw_score": 0.6754,
+        "calibration_group": "model|PERSON",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "discard",
+        "decision_reasons": [
+          "score 0.14 < 0.5"
+        ]
+      },
+      "decision": "discard"
+    },
+    {
+      "text": "Baker",
+      "type": "PERSON",
+      "start": 35,
+      "end": 40,
+      "score": 0.006319165658595732,
+      "source": "presidio",
+      "metadata": {
+        "presidio_label": "PERSON",
+        "detectors": [
+          "presidio"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "presidio": 0.85
+        },
+        "raw_score": 0.85,
+        "calibration_group": "presidio|PERSON",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "discard",
+        "decision_reasons": [
+          "score 0.01 < 0.5"
+        ]
+      },
+      "decision": "discard"
+    },
+    {
+      "text": "07/14/2026",
+      "type": "DATE_TIME",
+      "start": 53,
+      "end": 63,
+      "score": 0.9981788986989131,
+      "source": "model+presidio+rules",
+      "metadata": {
+        "presidio_label": "DATE_TIME",
+        "detectors": [
+          "model",
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 3,
+        "agreement": true,
+        "conflicting_types": [],
+        "raw_scores": {
+          "rules": 0.85,
+          "presidio": 0.95,
+          "model": 0.7572
+        },
+        "raw_score": 0.9982,
+        "calibration_group": "model+presidio+rules|DATE_TIME",
+        "calibrated": true,
+        "group_calibrated": false,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    },
+    {
+      "text": "Rita Gordon",
+      "type": "PERSON",
+      "start": 79,
+      "end": 90,
+      "score": 0.9625,
+      "source": "presidio+rules",
+      "metadata": {
+        "presidio_label": "PERSON",
+        "detectors": [
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 2,
+        "agreement": true,
+        "conflicting_types": [],
+        "raw_scores": {
+          "rules": 0.75,
+          "presidio": 0.85
+        },
+        "raw_score": 0.9625,
+        "calibration_group": "presidio+rules|PERSON",
+        "calibrated": true,
+        "group_calibrated": false,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    },
+    {
+      "text": "ZZ774121T",
+      "type": "GOV_ID",
+      "start": 99,
+      "end": 108,
+      "score": 0.9842148054344235,
+      "source": "model+presidio",
+      "metadata": {
+        "n_tokens": 7,
+        "min_token_prob": 0.9912,
+        "mean_margin": 0.9885,
+        "detectors": [
+          "model",
+          "presidio"
+        ],
+        "n_agreeing": 2,
+        "agreement": true,
+        "conflicting_types": [],
+        "raw_scores": {
+          "presidio": 0.3,
+          "model": 0.9933
+        },
+        "raw_score": 0.9953,
+        "calibration_group": "model+presidio|GOV_ID",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    },
+    {
+      "text": "Flat 91",
+      "type": "ADDRESS",
+      "start": 118,
+      "end": 125,
+      "score": 0.9908404357782139,
+      "source": "model",
+      "metadata": {
+        "n_tokens": 2,
+        "min_token_prob": 0.9771,
+        "mean_margin": 0.9617,
+        "detectors": [
+          "model"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.9779
+        },
+        "raw_score": 0.9779,
+        "calibration_group": "model|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    },
+    {
+      "text": "Howard Trafficway",
+      "type": "ADDRESS",
+      "start": 127,
+      "end": 144,
+      "score": 0.7779005718390849,
+      "source": "model+presidio",
+      "metadata": {
+        "n_tokens": 3,
+        "min_token_prob": 0.947,
+        "mean_margin": 0.9403,
+        "detectors": [
+          "model",
+          "presidio"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [
+          "PERSON"
+        ],
+        "raw_scores": {
+          "presidio": 0.85,
+          "model": 0.9646
+        },
+        "raw_score": 0.7235,
+        "calibration_group": "model+presidio|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "review",
+        "decision_reasons": [
+          "type conflict with ['PERSON']",
+          "score 0.78 < 0.9"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "Callumbury IV71 7RX",
+      "type": "ADDRESS",
+      "start": 146,
+      "end": 165,
+      "score": 0.9517052717942233,
+      "source": "model",
+      "metadata": {
+        "n_tokens": 8,
+        "min_token_prob": 0.4473,
+        "mean_margin": 0.684,
+        "detectors": [
+          "model"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.7843
+        },
+        "raw_score": 0.7843,
+        "calibration_group": "model|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "review",
+        "decision_reasons": [
+          "only model detected it"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "+44(0)9098790507",
+      "type": "PHONE",
+      "start": 173,
+      "end": 189,
+      "score": 0.9730367131317641,
+      "source": "model+presidio+rules",
+      "metadata": {
+        "rule": "phone_international",
+        "suppressed": [
+          {
+            "type": "PHONE",
+            "start": 173,
+            "end": 189,
+            "score": 0.9,
+            "source": "rules"
+          }
+        ],
+        "detectors": [
+          "model",
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 2,
+        "agreement": true,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.7166,
+          "rules": 0.92,
+          "presidio": 0.75
+        },
+        "raw_score": 0.98,
+        "calibration_group": "model+presidio+rules|PHONE",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    },
+    {
+      "text": "rgordon@turner.biz",
+      "type": "EMAIL",
+      "start": 199,
+      "end": 217,
+      "score": 0.98,
+      "source": "model+presidio+rules",
+      "metadata": {
+        "presidio_label": "EMAIL_ADDRESS",
+        "detectors": [
+          "model",
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 3,
+        "agreement": true,
+        "conflicting_types": [],
+        "raw_scores": {
+          "rules": 0.97,
+          "presidio": 1.0,
+          "model": 0.979
+        },
+        "raw_score": 1.0,
+        "calibration_group": "model+presidio+rules|EMAIL",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    },
+    {
+      "text": "ORD-195119",
+      "type": "GOV_ID",
+      "start": 258,
+      "end": 268,
+      "score": 0.44766947884262337,
+      "source": "model",
+      "metadata": {
+        "n_tokens": 5,
+        "min_token_prob": 0.5693,
+        "mean_margin": 0.5776,
+        "detectors": [
+          "model"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.704
+        },
+        "raw_score": 0.704,
+        "calibration_group": "model|GOV_ID",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "discard",
+        "decision_reasons": [
+          "score 0.45 < 0.5"
+        ]
+      },
+      "decision": "discard"
+    },
+    {
+      "text": "SKU-80-7955",
+      "type": "GOV_ID",
+      "start": 270,
+      "end": 281,
+      "score": 0.9669176386324373,
+      "source": "model+presidio",
+      "metadata": {
+        "n_tokens": 7,
+        "min_token_prob": 0.9707,
+        "mean_margin": 0.9828,
+        "detectors": [
+          "model",
+          "presidio"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [
+          "DATE_TIME"
+        ],
+        "raw_scores": {
+          "presidio": 0.85,
+          "model": 0.9883
+        },
+        "raw_score": 0.7412,
+        "calibration_group": "model+presidio|GOV_ID",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "review",
+        "decision_reasons": [
+          "type conflict with ['DATE_TIME']"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "9384",
+      "type": "ADDRESS",
+      "start": 293,
+      "end": 297,
+      "score": 0.9513042605389167,
+      "source": "model",
+      "metadata": {
+        "n_tokens": 2,
+        "min_token_prob": 0.757,
+        "mean_margin": 0.6161,
+        "detectors": [
+          "model"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.7821
+        },
+        "raw_score": 0.7821,
+        "calibration_group": "model|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "review",
+        "decision_reasons": [
+          "only model detected it"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "GB56ENRI65632122330792",
+      "type": "BANK_ACCOUNT",
+      "start": 339,
+      "end": 361,
+      "score": 0.75,
+      "source": "model+presidio+rules",
+      "metadata": {
+        "rule": "iban",
+        "checksum": "iban",
+        "checksum_passed": true,
+        "context_keyword": "account",
+        "detectors": [
+          "model",
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 2,
+        "agreement": true,
+        "conflicting_types": [
+          "GOV_ID"
+        ],
+        "raw_scores": {
+          "rules": 0.99,
+          "presidio": 1.0,
+          "model": 0.959
+        },
+        "raw_score": 0.75,
+        "calibration_group": "model+presidio+rules|BANK_ACCOUNT",
+        "calibrated": true,
+        "group_calibrated": false,
+        "decision": "review",
+        "decision_reasons": [
+          "type conflict with ['GOV_ID']",
+          "high-risk BANK_ACCOUNT below 0.95 confidence",
+          "score 0.75 < 0.9"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "402685995289078666",
+      "type": "GOV_ID",
+      "start": 376,
+      "end": 394,
+      "score": 0.43985184264898364,
+      "source": "model",
+      "metadata": {
+        "n_tokens": 10,
+        "min_token_prob": 0.608,
+        "mean_margin": 0.406,
+        "detectors": [
+          "model"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.6973
+        },
+        "raw_score": 0.6973,
+        "calibration_group": "model|GOV_ID",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "discard",
+        "decision_reasons": [
+          "score 0.44 < 0.5"
+        ]
+      },
+      "decision": "discard"
+    }
+  ],
+  "review_items": [
+    {
+      "document_id": "synth-invoice-en-0001",
+      "entity_type": "ADDRESS",
+      "text": "Howard Trafficway",
+      "start": 127,
+      "end": 144,
+      "score": 0.7779,
+      "reasons": [
+        "type conflict with ['PERSON']",
+        "score 0.78 < 0.9"
+      ],
+      "context": "...LL TO Name: Rita Gordon Tax ID: ZZ774121T Address: Flat 91, <<Howard Trafficway>>, Callumbury IV71 7RX Phone: +44(0)9098790507   Email: rgord...",
+      "source": "model+presidio",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-invoice-en-0001",
+      "entity_type": "ADDRESS",
+      "text": "Callumbury IV71 7RX",
+      "start": 146,
+      "end": 165,
+      "score": 0.9517,
+      "reasons": [
+        "only model detected it"
+      ],
+      "context": "...rdon Tax ID: ZZ774121T Address: Flat 91, Howard Trafficway, <<Callumbury IV71 7RX>> Phone: +44(0)9098790507   Email: rgordon@turner.biz  Descri...",
+      "source": "model",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-invoice-en-0001",
+      "entity_type": "GOV_ID",
+      "text": "SKU-80-7955",
+      "start": 270,
+      "end": 281,
+      "score": 0.9669,
+      "reasons": [
+        "type conflict with ['DATE_TIME']"
+      ],
+      "context": "...ner.biz  Description: Consulting services (ref. ORD-195119, <<SKU-80-7955>>) Subtotal: 9384,25 USD   Tax (10%)  PAYMENT Bank account GB...",
+      "source": "model+presidio",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-invoice-en-0001",
+      "entity_type": "ADDRESS",
+      "text": "9384",
+      "start": 293,
+      "end": 297,
+      "score": 0.9513,
+      "reasons": [
+        "only model detected it"
+      ],
+      "context": "...onsulting services (ref. ORD-195119, SKU-80-7955) Subtotal: <<9384>>,25 USD   Tax (10%)  PAYMENT Bank account GB56ENRI6563212233...",
+      "source": "model",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-invoice-en-0001",
+      "entity_type": "BANK_ACCOUNT",
+      "text": "GB56ENRI65632122330792",
+      "start": 339,
+      "end": 361,
+      "score": 0.75,
+      "reasons": [
+        "type conflict with ['GOV_ID']",
+        "high-risk BANK_ACCOUNT below 0.95 confidence",
+        "score 0.75 < 0.9"
+      ],
+      "context": "...55) Subtotal: 9384,25 USD   Tax (10%)  PAYMENT Bank account <<GB56ENRI65632122330792>> Card on file: 4026859952890786663 ",
+      "source": "model+presidio+rules",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    }
+  ]
+}

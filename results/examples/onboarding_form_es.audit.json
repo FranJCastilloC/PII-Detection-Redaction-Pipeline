@@ -1,0 +1,597 @@
+{
+  "document_id": "synth-onboarding_form-es-0008",
+  "language": "es",
+  "stats": {
+    "n_entities": 13,
+    "n_auto_redacted": 7,
+    "n_review": 6,
+    "n_discarded": 0,
+    "review_rate": 0.4615,
+    "by_type": {
+      "ADDRESS": 5,
+      "PERSON": 1,
+      "DATE_OF_BIRTH": 1,
+      "GOV_ID": 1,
+      "PHONE": 1,
+      "EMAIL": 1,
+      "BANK_ACCOUNT": 1,
+      "USERNAME": 1,
+      "CREDENTIAL": 1
+    },
+    "detections_per_engine": {
+      "rules": 6,
+      "presidio": 7,
+      "model": 14
+    },
+    "engines": [
+      "rules",
+      "presidio",
+      "model"
+    ],
+    "redaction_mode": "mask"
+  },
+  "leaks": [],
+  "entities": [
+    {
+      "text": "ORD",
+      "type": "ADDRESS",
+      "start": 50,
+      "end": 53,
+      "score": 0.922319308012646,
+      "source": "model",
+      "metadata": {
+        "n_tokens": 2,
+        "min_token_prob": 0.52,
+        "mean_margin": 0.3983,
+        "detectors": [
+          "model"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.6334
+        },
+        "raw_score": 0.6334,
+        "calibration_group": "model|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "review",
+        "decision_reasons": [
+          "only model detected it"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "517225",
+      "type": "ADDRESS",
+      "start": 54,
+      "end": 60,
+      "score": 0.8833115143684628,
+      "source": "model",
+      "metadata": {
+        "n_tokens": 3,
+        "min_token_prob": 0.4623,
+        "mean_margin": 0.1415,
+        "detectors": [
+          "model"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.4716
+        },
+        "raw_score": 0.4716,
+        "calibration_group": "model|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "review",
+        "decision_reasons": [
+          "score 0.88 < 0.9",
+          "only model detected it"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "Raquel Ferrández",
+      "type": "PERSON",
+      "start": 82,
+      "end": 98,
+      "score": 0.9933301103147162,
+      "source": "model+presidio+rules",
+      "metadata": {
+        "presidio_label": "PERSON",
+        "detectors": [
+          "model",
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 3,
+        "agreement": true,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.8221,
+          "rules": 0.75,
+          "presidio": 0.85
+        },
+        "raw_score": 0.9933,
+        "calibration_group": "model+presidio+rules|PERSON",
+        "calibrated": true,
+        "group_calibrated": false,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    },
+    {
+      "text": "04/12/1985",
+      "type": "DATE_OF_BIRTH",
+      "start": 120,
+      "end": 130,
+      "score": 0.7488183318100758,
+      "source": "model+presidio+rules",
+      "metadata": {
+        "n_tokens": 5,
+        "min_token_prob": 0.982,
+        "mean_margin": 0.9763,
+        "detectors": [
+          "model",
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 2,
+        "agreement": true,
+        "conflicting_types": [
+          "DATE_TIME"
+        ],
+        "raw_scores": {
+          "rules": 0.9,
+          "presidio": 0.6,
+          "model": 0.9842
+        },
+        "raw_score": 0.7488,
+        "calibration_group": "model+presidio+rules|DATE_OF_BIRTH",
+        "calibrated": true,
+        "group_calibrated": false,
+        "decision": "review",
+        "decision_reasons": [
+          "type conflict with ['DATE_TIME']",
+          "score 0.75 < 0.9"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "26670364R",
+      "type": "GOV_ID",
+      "start": 155,
+      "end": 164,
+      "score": 0.9997398238898573,
+      "source": "model+presidio+rules",
+      "metadata": {
+        "rule": "dni_nie",
+        "checksum": "dni",
+        "checksum_passed": true,
+        "context_keyword": "identidad",
+        "detectors": [
+          "model",
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 3,
+        "agreement": true,
+        "conflicting_types": [],
+        "raw_scores": {
+          "rules": 0.99,
+          "presidio": 1.0,
+          "model": 0.9919
+        },
+        "raw_score": 1.0,
+        "calibration_group": "model+presidio+rules|GOV_ID",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    },
+    {
+      "text": "Via de Rosario Sarmiento 546",
+      "type": "ADDRESS",
+      "start": 176,
+      "end": 204,
+      "score": 0.9873364617786714,
+      "source": "model",
+      "metadata": {
+        "n_tokens": 5,
+        "min_token_prob": 0.9498,
+        "mean_margin": 0.9414,
+        "detectors": [
+          "model"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.9648
+        },
+        "raw_score": 0.9648,
+        "calibration_group": "model|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    },
+    {
+      "text": "Las Palmas",
+      "type": "ADDRESS",
+      "start": 213,
+      "end": 223,
+      "score": 0.9376040167000218,
+      "source": "model+presidio",
+      "metadata": {
+        "n_tokens": 2,
+        "min_token_prob": 0.9736,
+        "mean_margin": 0.9545,
+        "detectors": [
+          "model",
+          "presidio"
+        ],
+        "n_agreeing": 2,
+        "agreement": true,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.9741,
+          "presidio": 0.85
+        },
+        "raw_score": 0.9961,
+        "calibration_group": "model+presidio|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    },
+    {
+      "text": "26507",
+      "type": "ADDRESS",
+      "start": 242,
+      "end": 247,
+      "score": 0.9973800081428169,
+      "source": "model+rules",
+      "metadata": {
+        "n_tokens": 3,
+        "min_token_prob": 0.9778,
+        "mean_margin": 0.9717,
+        "detectors": [
+          "model",
+          "rules"
+        ],
+        "n_agreeing": 2,
+        "agreement": true,
+        "conflicting_types": [],
+        "raw_scores": {
+          "rules": 0.85,
+          "model": 0.9825
+        },
+        "raw_score": 0.9974,
+        "calibration_group": "model+rules|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": false,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    },
+    {
+      "text": "+34 942 51 23 30",
+      "type": "PHONE",
+      "start": 264,
+      "end": 280,
+      "score": 0.9867823492920267,
+      "source": "model+presidio+rules",
+      "metadata": {
+        "rule": "phone_international",
+        "suppressed": [
+          {
+            "type": "PHONE",
+            "start": 264,
+            "end": 280,
+            "score": 0.9,
+            "source": "rules"
+          },
+          {
+            "type": "PHONE",
+            "start": 268,
+            "end": 280,
+            "score": 0.86,
+            "source": "rules"
+          }
+        ],
+        "detectors": [
+          "model",
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 3,
+        "agreement": true,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.8291,
+          "rules": 0.92,
+          "presidio": 0.4
+        },
+        "raw_score": 0.9918,
+        "calibration_group": "model+presidio+rules|PHONE",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    },
+    {
+      "text": "rferrández@gervasio.com",
+      "type": "EMAIL",
+      "start": 301,
+      "end": 324,
+      "score": 1.0,
+      "source": "model+presidio",
+      "metadata": {
+        "presidio_label": "EMAIL_ADDRESS",
+        "detectors": [
+          "model",
+          "presidio"
+        ],
+        "n_agreeing": 2,
+        "agreement": true,
+        "conflicting_types": [],
+        "raw_scores": {
+          "presidio": 1.0,
+          "model": 0.9923
+        },
+        "raw_score": 1.0,
+        "calibration_group": "model+presidio|EMAIL",
+        "calibrated": true,
+        "group_calibrated": false,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    },
+    {
+      "text": "ES3478720097447379727611",
+      "type": "BANK_ACCOUNT",
+      "start": 352,
+      "end": 376,
+      "score": 0.75,
+      "source": "model+presidio+rules",
+      "metadata": {
+        "rule": "iban",
+        "checksum": "iban",
+        "checksum_passed": true,
+        "context_keyword": "cuenta",
+        "detectors": [
+          "model",
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 2,
+        "agreement": true,
+        "conflicting_types": [
+          "GOV_ID"
+        ],
+        "raw_scores": {
+          "rules": 0.99,
+          "presidio": 1.0,
+          "model": 0.9499
+        },
+        "raw_score": 0.75,
+        "calibration_group": "model+presidio+rules|BANK_ACCOUNT",
+        "calibrated": true,
+        "group_calibrated": false,
+        "decision": "review",
+        "decision_reasons": [
+          "type conflict with ['GOV_ID']",
+          "high-risk BANK_ACCOUNT below 0.95 confidence",
+          "score 0.75 < 0.9"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "rferrández46",
+      "type": "USERNAME",
+      "start": 394,
+      "end": 406,
+      "score": 0.9686705979056779,
+      "source": "model",
+      "metadata": {
+        "n_tokens": 5,
+        "min_token_prob": 0.9831,
+        "mean_margin": 0.9802,
+        "detectors": [
+          "model"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.9864
+        },
+        "raw_score": 0.9864,
+        "calibration_group": "model|USERNAME",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "review",
+        "decision_reasons": [
+          "only model detected it"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "_(z6mUyOwz0k",
+      "type": "CREDENTIAL",
+      "start": 431,
+      "end": 443,
+      "score": 0.8059873140750219,
+      "source": "model",
+      "metadata": {
+        "n_tokens": 12,
+        "min_token_prob": 0.7104,
+        "mean_margin": 0.5563,
+        "detectors": [
+          "model"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.7615
+        },
+        "raw_score": 0.7615,
+        "calibration_group": "model|CREDENTIAL",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "review",
+        "decision_reasons": [
+          "high-risk CREDENTIAL below 0.95 confidence",
+          "score 0.81 < 0.9",
+          "only model detected it"
+        ]
+      },
+      "decision": "review"
+    }
+  ],
+  "review_items": [
+    {
+      "document_id": "synth-onboarding_form-es-0008",
+      "entity_type": "ADDRESS",
+      "text": "ORD",
+      "start": 50,
+      "end": 53,
+      "score": 0.9223,
+      "reasons": [
+        "only model detected it"
+      ],
+      "context": "FORMULARIO DE ALTA DE CLIENTE Referencia interna: <<ORD>>-517225  Nombre y apellidos: Raquel Ferrández Fecha de nacim...",
+      "source": "model",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-onboarding_form-es-0008",
+      "entity_type": "ADDRESS",
+      "text": "517225",
+      "start": 54,
+      "end": 60,
+      "score": 0.8833,
+      "reasons": [
+        "score 0.88 < 0.9",
+        "only model detected it"
+      ],
+      "context": "FORMULARIO DE ALTA DE CLIENTE Referencia interna: ORD-<<517225>>  Nombre y apellidos: Raquel Ferrández Fecha de nacimiento: ...",
+      "source": "model",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-onboarding_form-es-0008",
+      "entity_type": "DATE_OF_BIRTH",
+      "text": "04/12/1985",
+      "start": 120,
+      "end": 130,
+      "score": 0.7488,
+      "reasons": [
+        "type conflict with ['DATE_TIME']",
+        "score 0.75 < 0.9"
+      ],
+      "context": "...  Nombre y apellidos: Raquel Ferrández Fecha de nacimiento: <<04/12/1985>> Documento de identidad: 26670364R Dirección: Via de Rosario...",
+      "source": "model+presidio+rules",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-onboarding_form-es-0008",
+      "entity_type": "BANK_ACCOUNT",
+      "text": "ES3478720097447379727611",
+      "start": 352,
+      "end": 376,
+      "score": 0.75,
+      "reasons": [
+        "type conflict with ['GOV_ID']",
+        "high-risk BANK_ACCOUNT below 0.95 confidence",
+        "score 0.75 < 0.9"
+      ],
+      "context": "...trónico: rferrández@gervasio.com Cuenta para domiciliación: <<ES3478720097447379727611>> Usuario deseado: rferrández46 Contraseña provisional: _(z6m...",
+      "source": "model+presidio+rules",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-onboarding_form-es-0008",
+      "entity_type": "USERNAME",
+      "text": "rferrández46",
+      "start": 394,
+      "end": 406,
+      "score": 0.9687,
+      "reasons": [
+        "only model detected it"
+      ],
+      "context": "...ra domiciliación: ES3478720097447379727611 Usuario deseado: <<rferrández46>> Contraseña provisional: _(z6mUyOwz0k  Declaro que los datos...",
+      "source": "model",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-onboarding_form-es-0008",
+      "entity_type": "CREDENTIAL",
+      "text": "_(z6mUyOwz0k",
+      "start": 431,
+      "end": 443,
+      "score": 0.806,
+      "reasons": [
+        "high-risk CREDENTIAL below 0.95 confidence",
+        "score 0.81 < 0.9",
+        "only model detected it"
+      ],
+      "context": "...27611 Usuario deseado: rferrández46 Contraseña provisional: <<_(z6mUyOwz0k>>  Declaro que los datos son veraces y autorizo su tratamient...",
+      "source": "model",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    }
+  ]
+}

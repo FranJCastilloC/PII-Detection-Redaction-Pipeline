@@ -1,0 +1,14 @@
+TICKET DE SOPORTE TCK-22267
+Prioridad: Baja   Estado: Abierto
+
+Reportado por: Modesto [NOMBRE] ([EMAIL])
+Usuario de la plataforma: [USUARIO]
+Teléfono de contacto: 08362361078
+
+DESCRIPCIÓN
+El cliente no puede acceder a su cuenta. Indica que restableció la contraseña a [CREDENCIAL] y aun así recibe un error.
+Último acceso registrado desde la IP [IP] el [FECHA].
+
+VERIFICACIÓN DE IDENTIDAD
+Documento aportado: [IDENTIFICACION]   Fecha de nacimiento: [FECHA_NACIMIENTO]
+Nota interna: revisar duplicidad con TCK-22267.

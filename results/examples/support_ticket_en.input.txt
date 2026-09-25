@@ -1,0 +1,14 @@
+SUPPORT TICKET TCK-12957
+Priority: High   Status: Open
+
+Reported by: Laura Cook (lcook@martin.com)
+Platform username: lcook92
+Contact phone: +44(0)20 7496 0305
+
+DESCRIPTION
+The customer cannot sign in. They report resetting the password to $_l*2uEaD+0% and still getting an error.
+Last recorded login from IP 66.200.169.12 on 09/07/2026.
+
+IDENTITY VERIFICATION
+Document provided: ZZ 619239 T   Date of birth: 10/13/1970
+Internal note: check for duplicate of TCK-12957.

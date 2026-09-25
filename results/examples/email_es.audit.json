@@ -1,0 +1,736 @@
+{
+  "document_id": "synth-email-es-0004",
+  "language": "es",
+  "stats": {
+    "n_entities": 17,
+    "n_auto_redacted": 3,
+    "n_review": 8,
+    "n_discarded": 6,
+    "review_rate": 0.4706,
+    "by_type": {
+      "GOV_ID": 6,
+      "ADDRESS": 6,
+      "EMAIL": 2,
+      "PERSON": 2,
+      "CREDIT_CARD": 1
+    },
+    "detections_per_engine": {
+      "rules": 3,
+      "presidio": 11,
+      "model": 15
+    },
+    "engines": [
+      "rules",
+      "presidio",
+      "model"
+    ],
+    "redaction_mode": "mask"
+  },
+  "leaks": [],
+  "entities": [
+    {
+      "text": "aespinal@porras-anaya.biz",
+      "type": "EMAIL",
+      "start": 4,
+      "end": 29,
+      "score": 0.98,
+      "source": "model+presidio+rules",
+      "metadata": {
+        "presidio_label": "EMAIL_ADDRESS",
+        "detectors": [
+          "model",
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 3,
+        "agreement": true,
+        "conflicting_types": [],
+        "raw_scores": {
+          "rules": 0.97,
+          "presidio": 1.0,
+          "model": 0.7915
+        },
+        "raw_score": 1.0,
+        "calibration_group": "model+presidio+rules|EMAIL",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    },
+    {
+      "text": "rgollum@grupo.biz",
+      "type": "EMAIL",
+      "start": 36,
+      "end": 53,
+      "score": 0.98,
+      "source": "model+presidio+rules",
+      "metadata": {
+        "presidio_label": "EMAIL_ADDRESS",
+        "detectors": [
+          "model",
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 3,
+        "agreement": true,
+        "conflicting_types": [],
+        "raw_scores": {
+          "rules": 0.97,
+          "presidio": 1.0,
+          "model": 0.8282
+        },
+        "raw_score": 1.0,
+        "calibration_group": "model+presidio+rules|EMAIL",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    },
+    {
+      "text": "ORD",
+      "type": "GOV_ID",
+      "start": 88,
+      "end": 91,
+      "score": 0.3487154589334598,
+      "source": "model",
+      "metadata": {
+        "n_tokens": 2,
+        "min_token_prob": 0.5398,
+        "mean_margin": 0.2805,
+        "detectors": [
+          "model"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.6103
+        },
+        "raw_score": 0.6103,
+        "calibration_group": "model|GOV_ID",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "discard",
+        "decision_reasons": [
+          "score 0.35 < 0.5"
+        ]
+      },
+      "decision": "discard"
+    },
+    {
+      "text": "479146",
+      "type": "GOV_ID",
+      "start": 92,
+      "end": 98,
+      "score": 0.5769133211948702,
+      "source": "model",
+      "metadata": {
+        "n_tokens": 3,
+        "min_token_prob": 0.7048,
+        "mean_margin": 0.6282,
+        "detectors": [
+          "model"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.8006
+        },
+        "raw_score": 0.8006,
+        "calibration_group": "model|GOV_ID",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "review",
+        "decision_reasons": [
+          "high-risk GOV_ID below 0.95 confidence",
+          "score 0.58 < 0.9",
+          "only model detected it"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "Estimado",
+      "type": "ADDRESS",
+      "start": 100,
+      "end": 108,
+      "score": 0.0352937537526572,
+      "source": "presidio",
+      "metadata": {
+        "presidio_label": "LOCATION",
+        "detectors": [
+          "presidio"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "presidio": 0.85
+        },
+        "raw_score": 0.85,
+        "calibration_group": "presidio|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "discard",
+        "decision_reasons": [
+          "score 0.04 < 0.5"
+        ]
+      },
+      "decision": "discard"
+    },
+    {
+      "text": "Gollum",
+      "type": "PERSON",
+      "start": 116,
+      "end": 122,
+      "score": 0.9397365120061192,
+      "source": "model+presidio",
+      "metadata": {
+        "n_tokens": 2,
+        "min_token_prob": 0.8182,
+        "mean_margin": 0.7348,
+        "detectors": [
+          "model",
+          "presidio"
+        ],
+        "n_agreeing": 2,
+        "agreement": true,
+        "conflicting_types": [],
+        "raw_scores": {
+          "presidio": 0.85,
+          "model": 0.8548
+        },
+        "raw_score": 0.9782,
+        "calibration_group": "model+presidio|PERSON",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    },
+    {
+      "text": "ORD",
+      "type": "GOV_ID",
+      "start": 154,
+      "end": 157,
+      "score": 0.3487154589334598,
+      "source": "model",
+      "metadata": {
+        "n_tokens": 2,
+        "min_token_prob": 0.4964,
+        "mean_margin": 0.2038,
+        "detectors": [
+          "model"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.5763
+        },
+        "raw_score": 0.5763,
+        "calibration_group": "model|GOV_ID",
+        "calibrated": true,
+        "group_calibrated": true,
+        "score_before_repeat_propagation": 0.3176,
+        "decision": "discard",
+        "decision_reasons": [
+          "score 0.35 < 0.5"
+        ]
+      },
+      "decision": "discard"
+    },
+    {
+      "text": "479146",
+      "type": "GOV_ID",
+      "start": 158,
+      "end": 164,
+      "score": 0.5769133211948702,
+      "source": "model",
+      "metadata": {
+        "n_tokens": 3,
+        "min_token_prob": 0.7147,
+        "mean_margin": 0.5659,
+        "detectors": [
+          "model"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.7725
+        },
+        "raw_score": 0.7725,
+        "calibration_group": "model|GOV_ID",
+        "calibrated": true,
+        "group_calibrated": true,
+        "score_before_repeat_propagation": 0.5358,
+        "decision": "review",
+        "decision_reasons": [
+          "high-risk GOV_ID below 0.95 confidence",
+          "score 0.58 < 0.9",
+          "only model detected it"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "Ampliación Niger",
+      "type": "ADDRESS",
+      "start": 208,
+      "end": 224,
+      "score": 0.0352937537526572,
+      "source": "presidio",
+      "metadata": {
+        "presidio_label": "LOCATION",
+        "detectors": [
+          "presidio"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "presidio": 0.85
+        },
+        "raw_score": 0.85,
+        "calibration_group": "presidio|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "discard",
+        "decision_reasons": [
+          "score 0.04 < 0.5"
+        ]
+      },
+      "decision": "discard"
+    },
+    {
+      "text": "374",
+      "type": "GOV_ID",
+      "start": 229,
+      "end": 232,
+      "score": 0.19382136816220863,
+      "source": "model",
+      "metadata": {
+        "n_tokens": 1,
+        "min_token_prob": 0.4115,
+        "mean_margin": 0.0934,
+        "detectors": [
+          "model"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.4115
+        },
+        "raw_score": 0.4115,
+        "calibration_group": "model|GOV_ID",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "discard",
+        "decision_reasons": [
+          "score 0.19 < 0.5"
+        ]
+      },
+      "decision": "discard"
+    },
+    {
+      "text": "San Frida",
+      "type": "ADDRESS",
+      "start": 234,
+      "end": 243,
+      "score": 0.7553434156202484,
+      "source": "model+presidio",
+      "metadata": {
+        "presidio_label": "LOCATION",
+        "detectors": [
+          "model",
+          "presidio"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [
+          "PERSON"
+        ],
+        "raw_scores": {
+          "presidio": 0.85,
+          "model": 0.4524
+        },
+        "raw_score": 0.6375,
+        "calibration_group": "model+presidio|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "review",
+        "decision_reasons": [
+          "type conflict with ['PERSON']",
+          "score 0.76 < 0.9"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "2283776020776422",
+      "type": "CREDIT_CARD",
+      "start": 309,
+      "end": 325,
+      "score": 0.7424999999999999,
+      "source": "model+rules",
+      "metadata": {
+        "rule": "credit_card",
+        "checksum": "luhn",
+        "checksum_passed": true,
+        "context_keyword": "tarjeta",
+        "detectors": [
+          "model",
+          "rules"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [
+          "GOV_ID"
+        ],
+        "raw_scores": {
+          "rules": 0.99,
+          "model": 0.9834
+        },
+        "raw_score": 0.7425,
+        "calibration_group": "model+rules|CREDIT_CARD",
+        "calibrated": true,
+        "group_calibrated": false,
+        "decision": "review",
+        "decision_reasons": [
+          "type conflict with ['GOV_ID']",
+          "high-risk CREDIT_CARD below 0.95 confidence",
+          "score 0.74 < 0.9"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "EUR",
+      "type": "PERSON",
+      "start": 349,
+      "end": 352,
+      "score": 0.006319165658595732,
+      "source": "presidio",
+      "metadata": {
+        "presidio_label": "PERSON",
+        "detectors": [
+          "presidio"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "presidio": 0.85
+        },
+        "raw_score": 0.85,
+        "calibration_group": "presidio|PERSON",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "discard",
+        "decision_reasons": [
+          "score 0.01 < 0.5"
+        ]
+      },
+      "decision": "discard"
+    },
+    {
+      "text": "07409319254",
+      "type": "GOV_ID",
+      "start": 399,
+      "end": 410,
+      "score": 0.966808094218175,
+      "source": "model+presidio",
+      "metadata": {
+        "n_tokens": 7,
+        "min_token_prob": 0.9792,
+        "mean_margin": 0.97,
+        "detectors": [
+          "model",
+          "presidio"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [
+          "PHONE"
+        ],
+        "raw_scores": {
+          "presidio": 0.4,
+          "model": 0.9833
+        },
+        "raw_score": 0.7375,
+        "calibration_group": "model+presidio|GOV_ID",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "review",
+        "decision_reasons": [
+          "type conflict with ['PHONE']"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "Abigail Espinal\nSuárez",
+      "type": "ADDRESS",
+      "start": 463,
+      "end": 485,
+      "score": 0.7553434156202484,
+      "source": "model+presidio",
+      "metadata": {
+        "presidio_label": "LOCATION",
+        "detectors": [
+          "model",
+          "presidio"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [
+          "PERSON"
+        ],
+        "raw_scores": {
+          "model": 0.6781,
+          "presidio": 0.85
+        },
+        "raw_score": 0.6375,
+        "calibration_group": "model+presidio|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "review",
+        "decision_reasons": [
+          "type conflict with ['PERSON']",
+          "score 0.76 < 0.9"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "Rocha",
+      "type": "ADDRESS",
+      "start": 487,
+      "end": 492,
+      "score": 0.7553434156202484,
+      "source": "model+presidio",
+      "metadata": {
+        "presidio_label": "LOCATION",
+        "detectors": [
+          "model",
+          "presidio"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [
+          "PERSON"
+        ],
+        "raw_scores": {
+          "presidio": 0.85,
+          "model": 0.6258
+        },
+        "raw_score": 0.6375,
+        "calibration_group": "model+presidio|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "review",
+        "decision_reasons": [
+          "type conflict with ['PERSON']",
+          "score 0.76 < 0.9"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "Rangel - Atención",
+      "type": "ADDRESS",
+      "start": 495,
+      "end": 512,
+      "score": 0.7553434156202484,
+      "source": "model+presidio",
+      "metadata": {
+        "presidio_label": "LOCATION",
+        "detectors": [
+          "model",
+          "presidio"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [
+          "PERSON"
+        ],
+        "raw_scores": {
+          "model": 0.6529,
+          "presidio": 0.85
+        },
+        "raw_score": 0.6375,
+        "calibration_group": "model+presidio|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "review",
+        "decision_reasons": [
+          "type conflict with ['PERSON']",
+          "score 0.76 < 0.9"
+        ]
+      },
+      "decision": "review"
+    }
+  ],
+  "review_items": [
+    {
+      "document_id": "synth-email-es-0004",
+      "entity_type": "GOV_ID",
+      "text": "479146",
+      "start": 92,
+      "end": 98,
+      "score": 0.5769,
+      "reasons": [
+        "high-risk GOV_ID below 0.95 confidence",
+        "score 0.58 < 0.9",
+        "only model detected it"
+      ],
+      "context": "...ra: rgollum@grupo.biz Asunto: Confirmación de su pedido ORD-<<479146>>  Estimado/a Raúl Gollum:  Le confirmamos que su pedido ORD-...",
+      "source": "model",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-email-es-0004",
+      "entity_type": "GOV_ID",
+      "text": "479146",
+      "start": 158,
+      "end": 164,
+      "score": 0.5769,
+      "reasons": [
+        "high-risk GOV_ID below 0.95 confidence",
+        "score 0.58 < 0.9",
+        "only model detected it"
+      ],
+      "context": "...  Estimado/a Raúl Gollum:  Le confirmamos que su pedido ORD-<<479146>> ha sido procesado. El envío se realizará a Ampliación Niger...",
+      "source": "model",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-email-es-0004",
+      "entity_type": "ADDRESS",
+      "text": "San Frida",
+      "start": 234,
+      "end": 243,
+      "score": 0.7553,
+      "reasons": [
+        "type conflict with ['PERSON']",
+        "score 0.76 < 0.9"
+      ],
+      "context": "...rocesado. El envío se realizará a Ampliación Niger 741 374, <<San Frida>> los bajos.  Hemos registrado el cargo en la tarjeta termina...",
+      "source": "model+presidio",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-email-es-0004",
+      "entity_type": "CREDIT_CARD",
+      "text": "2283776020776422",
+      "start": 309,
+      "end": 325,
+      "score": 0.7425,
+      "reasons": [
+        "type conflict with ['GOV_ID']",
+        "high-risk CREDIT_CARD below 0.95 confidence",
+        "score 0.74 < 0.9"
+      ],
+      "context": "...ajos.  Hemos registrado el cargo en la tarjeta terminada en <<2283776020776422>> por importe de 4119,20 EUR.  Si necesita modificar el envío...",
+      "source": "model+rules",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-email-es-0004",
+      "entity_type": "GOV_ID",
+      "text": "07409319254",
+      "start": 399,
+      "end": 410,
+      "score": 0.9668,
+      "reasons": [
+        "type conflict with ['PHONE']"
+      ],
+      "context": "...e 4119,20 EUR.  Si necesita modificar el envío, llámenos al <<07409319254>> indicando su número de cliente.  Un cordial saludo, Abigail...",
+      "source": "model+presidio",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-email-es-0004",
+      "entity_type": "ADDRESS",
+      "text": "Abigail Espinal\nSuárez",
+      "start": 463,
+      "end": 485,
+      "score": 0.7553,
+      "reasons": [
+        "type conflict with ['PERSON']",
+        "score 0.76 < 0.9"
+      ],
+      "context": "...9319254 indicando su número de cliente.  Un cordial saludo, <<Abigail Espinal Suárez>>, Rocha y Rangel - Atención al cliente ",
+      "source": "model+presidio",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-email-es-0004",
+      "entity_type": "ADDRESS",
+      "text": "Rocha",
+      "start": 487,
+      "end": 492,
+      "score": 0.7553,
+      "reasons": [
+        "type conflict with ['PERSON']",
+        "score 0.76 < 0.9"
+      ],
+      "context": "...ero de cliente.  Un cordial saludo, Abigail Espinal Suárez, <<Rocha>> y Rangel - Atención al cliente ",
+      "source": "model+presidio",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-email-es-0004",
+      "entity_type": "ADDRESS",
+      "text": "Rangel - Atención",
+      "start": 495,
+      "end": 512,
+      "score": 0.7553,
+      "reasons": [
+        "type conflict with ['PERSON']",
+        "score 0.76 < 0.9"
+      ],
+      "context": "...liente.  Un cordial saludo, Abigail Espinal Suárez, Rocha y <<Rangel - Atención>> al cliente ",
+      "source": "model+presidio",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+TICKET DE SOPORTE TCK-22267
+Prioridad: Baja   Estado: Abierto
+
+Reportado por: Modesto Menchaca (mmenchaca@rincon-najera.org)
+Usuario de la plataforma: mmenchaca53
+Teléfono de contacto: 08362361078
+
+DESCRIPCIÓN
+El cliente no puede acceder a su cuenta. Indica que restableció la contraseña a z1Umoo#9_2xV y aun así recibe un error.
+Último acceso registrado desde la IP 24.81.126.238 el 04/09/2026.
+
+VERIFICACIÓN DE IDENTIDAD
+Documento aportado: 77799057300   Fecha de nacimiento: 04/02/1991
+Nota interna: revisar duplicidad con TCK-22267.

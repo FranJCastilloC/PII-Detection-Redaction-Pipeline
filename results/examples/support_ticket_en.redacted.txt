@@ -1,0 +1,14 @@
+SUPPORT TICKET TCK-12957
+Priority: High   Status: Open
+
+Reported by: Laura Cook ([EMAIL])
+Platform username: [USERNAME]
+Contact phone: [PHONE]
+
+DESCRIPTION
+The customer cannot sign in. They report resetting the password to [CREDENTIAL]0% and still getting an error.
+Last recorded login from IP [IP] on [DATE].
+
+IDENTITY VERIFICATION
+Document provided: [GOV_ID]   Date of birth: [DATE]
+Internal note: check for duplicate of TCK-12957.

@@ -1,0 +1,589 @@
+{
+  "document_id": "synth-email-en-0005",
+  "language": "en",
+  "stats": {
+    "n_entities": 14,
+    "n_auto_redacted": 3,
+    "n_review": 5,
+    "n_discarded": 6,
+    "review_rate": 0.3571,
+    "by_type": {
+      "GOV_ID": 5,
+      "PERSON": 4,
+      "EMAIL": 2,
+      "ADDRESS": 1,
+      "CREDIT_CARD": 1,
+      "DATE_TIME": 1
+    },
+    "detections_per_engine": {
+      "rules": 5,
+      "presidio": 9,
+      "model": 14
+    },
+    "engines": [
+      "rules",
+      "presidio",
+      "model"
+    ],
+    "redaction_mode": "mask"
+  },
+  "leaks": [],
+  "entities": [
+    {
+      "text": "pallan@howard.com",
+      "type": "EMAIL",
+      "start": 6,
+      "end": 23,
+      "score": 0.98,
+      "source": "model+presidio+rules",
+      "metadata": {
+        "presidio_label": "EMAIL_ADDRESS",
+        "detectors": [
+          "model",
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 3,
+        "agreement": true,
+        "conflicting_types": [],
+        "raw_scores": {
+          "rules": 0.97,
+          "presidio": 1.0,
+          "model": 0.9539
+        },
+        "raw_score": 1.0,
+        "calibration_group": "model+presidio+rules|EMAIL",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    },
+    {
+      "text": "dbishop@griffiths.info",
+      "type": "EMAIL",
+      "start": 28,
+      "end": 50,
+      "score": 0.98,
+      "source": "model+presidio+rules",
+      "metadata": {
+        "presidio_label": "EMAIL_ADDRESS",
+        "detectors": [
+          "model",
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 3,
+        "agreement": true,
+        "conflicting_types": [],
+        "raw_scores": {
+          "rules": 0.97,
+          "presidio": 1.0,
+          "model": 0.9675
+        },
+        "raw_score": 1.0,
+        "calibration_group": "model+presidio+rules|EMAIL",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    },
+    {
+      "text": "ORD",
+      "type": "GOV_ID",
+      "start": 71,
+      "end": 74,
+      "score": 0.3480842546824918,
+      "source": "model",
+      "metadata": {
+        "n_tokens": 2,
+        "min_token_prob": 0.4925,
+        "mean_margin": 0.2919,
+        "detectors": [
+          "model"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.6097
+        },
+        "raw_score": 0.6097,
+        "calibration_group": "model|GOV_ID",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "discard",
+        "decision_reasons": [
+          "score 0.35 < 0.5"
+        ]
+      },
+      "decision": "discard"
+    },
+    {
+      "text": "636800",
+      "type": "GOV_ID",
+      "start": 75,
+      "end": 81,
+      "score": 0.45613485962231903,
+      "source": "model",
+      "metadata": {
+        "n_tokens": 3,
+        "min_token_prob": 0.6301,
+        "mean_margin": 0.4634,
+        "detectors": [
+          "model"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.7111
+        },
+        "raw_score": 0.7111,
+        "calibration_group": "model|GOV_ID",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "discard",
+        "decision_reasons": [
+          "score 0.46 < 0.5"
+        ]
+      },
+      "decision": "discard"
+    },
+    {
+      "text": "Dear Derek Bishop",
+      "type": "PERSON",
+      "start": 96,
+      "end": 113,
+      "score": 0.006319165658595732,
+      "source": "presidio",
+      "metadata": {
+        "presidio_label": "PERSON",
+        "detectors": [
+          "presidio"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "presidio": 0.85
+        },
+        "raw_score": 0.85,
+        "calibration_group": "presidio|PERSON",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "discard",
+        "decision_reasons": [
+          "score 0.01 < 0.5"
+        ]
+      },
+      "decision": "discard"
+    },
+    {
+      "text": "OR",
+      "type": "GOV_ID",
+      "start": 153,
+      "end": 155,
+      "score": 0.43316476540703613,
+      "source": "model",
+      "metadata": {
+        "n_tokens": 1,
+        "min_token_prob": 0.6915,
+        "mean_margin": 0.4292,
+        "detectors": [
+          "model"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.6915
+        },
+        "raw_score": 0.6915,
+        "calibration_group": "model|GOV_ID",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "discard",
+        "decision_reasons": [
+          "score 0.43 < 0.5"
+        ]
+      },
+      "decision": "discard"
+    },
+    {
+      "text": "636800",
+      "type": "GOV_ID",
+      "start": 157,
+      "end": 163,
+      "score": 0.45613485962231903,
+      "source": "model",
+      "metadata": {
+        "n_tokens": 3,
+        "min_token_prob": 0.6253,
+        "mean_margin": 0.4555,
+        "detectors": [
+          "model"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.7096
+        },
+        "raw_score": 0.7096,
+        "calibration_group": "model|GOV_ID",
+        "calibrated": true,
+        "group_calibrated": true,
+        "score_before_repeat_propagation": 0.4544,
+        "decision": "discard",
+        "decision_reasons": [
+          "score 0.46 < 0.5"
+        ]
+      },
+      "decision": "discard"
+    },
+    {
+      "text": "Leah Stravenue",
+      "type": "PERSON",
+      "start": 208,
+      "end": 222,
+      "score": 0.6375,
+      "source": "model+presidio+rules",
+      "metadata": {
+        "presidio_label": "PERSON",
+        "detectors": [
+          "model",
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [
+          "ADDRESS"
+        ],
+        "raw_scores": {
+          "model": 0.6975,
+          "rules": 0.8,
+          "presidio": 0.85
+        },
+        "raw_score": 0.6375,
+        "calibration_group": "model+presidio+rules|PERSON",
+        "calibrated": true,
+        "group_calibrated": false,
+        "decision": "review",
+        "decision_reasons": [
+          "type conflict with ['ADDRESS']",
+          "score 0.64 < 0.9"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "Scottview",
+      "type": "ADDRESS",
+      "start": 224,
+      "end": 233,
+      "score": 0.9169974941038411,
+      "source": "model+presidio",
+      "metadata": {
+        "n_tokens": 2,
+        "min_token_prob": 0.9245,
+        "mean_margin": 0.8933,
+        "detectors": [
+          "model",
+          "presidio"
+        ],
+        "n_agreeing": 2,
+        "agreement": true,
+        "conflicting_types": [],
+        "raw_scores": {
+          "presidio": 0.85,
+          "model": 0.9323
+        },
+        "raw_score": 0.9898,
+        "calibration_group": "model+presidio|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    },
+    {
+      "text": "6500376143653703",
+      "type": "CREDIT_CARD",
+      "start": 266,
+      "end": 282,
+      "score": 0.75,
+      "source": "model+presidio+rules",
+      "metadata": {
+        "rule": "credit_card",
+        "checksum": "luhn",
+        "checksum_passed": true,
+        "context_keyword": "card",
+        "detectors": [
+          "model",
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 2,
+        "agreement": true,
+        "conflicting_types": [
+          "GOV_ID"
+        ],
+        "raw_scores": {
+          "rules": 0.99,
+          "presidio": 1.0,
+          "model": 0.9693
+        },
+        "raw_score": 0.75,
+        "calibration_group": "model+presidio+rules|CREDIT_CARD",
+        "calibrated": true,
+        "group_calibrated": false,
+        "decision": "review",
+        "decision_reasons": [
+          "type conflict with ['GOV_ID']",
+          "high-risk CREDIT_CARD below 0.95 confidence",
+          "score 0.75 < 0.9"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "2610,72 USD",
+      "type": "DATE_TIME",
+      "start": 287,
+      "end": 298,
+      "score": 0.85,
+      "source": "presidio",
+      "metadata": {
+        "presidio_label": "DATE_TIME",
+        "detectors": [
+          "presidio"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "presidio": 0.85
+        },
+        "raw_score": 0.85,
+        "calibration_group": "presidio|DATE_TIME",
+        "calibrated": true,
+        "group_calibrated": false,
+        "decision": "review",
+        "decision_reasons": [
+          "score 0.85 < 0.9",
+          "only presidio detected it"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "114 496 0800",
+      "type": "GOV_ID",
+      "start": 350,
+      "end": 362,
+      "score": 0.9774643295820985,
+      "source": "model+presidio+rules",
+      "metadata": {
+        "presidio_label": "UK_NHS",
+        "suppressed": [
+          {
+            "type": "PHONE",
+            "start": 344,
+            "end": 362,
+            "score": 0.4,
+            "source": "presidio"
+          }
+        ],
+        "detectors": [
+          "model",
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [
+          "PHONE"
+        ],
+        "raw_scores": {
+          "model": 0.5865,
+          "rules": 0.92,
+          "presidio": 1.0
+        },
+        "raw_score": 0.75,
+        "calibration_group": "model+presidio+rules|GOV_ID",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "review",
+        "decision_reasons": [
+          "type conflict with ['PHONE']"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "Patrick Allan",
+      "type": "PERSON",
+      "start": 413,
+      "end": 426,
+      "score": 0.8713280244362696,
+      "source": "model+presidio",
+      "metadata": {
+        "presidio_label": "PERSON",
+        "detectors": [
+          "model",
+          "presidio"
+        ],
+        "n_agreeing": 2,
+        "agreement": true,
+        "conflicting_types": [],
+        "raw_scores": {
+          "presidio": 0.85,
+          "model": 0.4669
+        },
+        "raw_score": 0.92,
+        "calibration_group": "model+presidio|PERSON",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "review",
+        "decision_reasons": [
+          "score 0.87 < 0.9"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "Johnston-Bradley",
+      "type": "PERSON",
+      "start": 427,
+      "end": 443,
+      "score": 0.06171172373368918,
+      "source": "model",
+      "metadata": {
+        "n_tokens": 3,
+        "min_token_prob": 0.4963,
+        "mean_margin": 0.2461,
+        "detectors": [
+          "model"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.5424
+        },
+        "raw_score": 0.5424,
+        "calibration_group": "model|PERSON",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "discard",
+        "decision_reasons": [
+          "score 0.06 < 0.5"
+        ]
+      },
+      "decision": "discard"
+    }
+  ],
+  "review_items": [
+    {
+      "document_id": "synth-email-en-0005",
+      "entity_type": "PERSON",
+      "text": "Leah Stravenue",
+      "start": 208,
+      "end": 222,
+      "score": 0.6375,
+      "reasons": [
+        "type conflict with ['ADDRESS']",
+        "score 0.64 < 0.9"
+      ],
+      "context": "...rder ORD-636800 has been processed. It will be shipped to 9 <<Leah Stravenue>>, Scottview.  We charged the card ending in 6500376143653703...",
+      "source": "model+presidio+rules",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-email-en-0005",
+      "entity_type": "CREDIT_CARD",
+      "text": "6500376143653703",
+      "start": 266,
+      "end": 282,
+      "score": 0.75,
+      "reasons": [
+        "type conflict with ['GOV_ID']",
+        "high-risk CREDIT_CARD below 0.95 confidence",
+        "score 0.75 < 0.9"
+      ],
+      "context": "...9 Leah Stravenue, Scottview.  We charged the card ending in <<6500376143653703>> for 2610,72 USD.  To change the delivery address, call us a...",
+      "source": "model+presidio+rules",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-email-en-0005",
+      "entity_type": "DATE_TIME",
+      "text": "2610,72 USD",
+      "start": 287,
+      "end": 298,
+      "score": 0.85,
+      "reasons": [
+        "score 0.85 < 0.9",
+        "only presidio detected it"
+      ],
+      "context": "...ttview.  We charged the card ending in 6500376143653703 for <<2610,72 USD>>.  To change the delivery address, call us at +44(0)114 496 ...",
+      "source": "presidio",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-email-en-0005",
+      "entity_type": "GOV_ID",
+      "text": "114 496 0800",
+      "start": 350,
+      "end": 362,
+      "score": 0.9775,
+      "reasons": [
+        "type conflict with ['PHONE']"
+      ],
+      "context": "...0,72 USD.  To change the delivery address, call us at +44(0)<<114 496 0800>> with your customer number at hand.  Best regards, Patrick A...",
+      "source": "model+presidio+rules",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-email-en-0005",
+      "entity_type": "PERSON",
+      "text": "Patrick Allan",
+      "start": 413,
+      "end": 426,
+      "score": 0.8713,
+      "reasons": [
+        "score 0.87 < 0.9"
+      ],
+      "context": "... 496 0800 with your customer number at hand.  Best regards, <<Patrick Allan>> Johnston-Bradley - Customer Care ",
+      "source": "model+presidio",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    }
+  ]
+}

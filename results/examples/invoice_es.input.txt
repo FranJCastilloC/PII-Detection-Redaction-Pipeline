@@ -1,0 +1,16 @@
+FACTURA N.º 2025-1791
+Cabán-Jimínez
+Fecha de emisión: 16/01/2026
+
+DATOS DEL CLIENTE
+Nombre: Aida Corona
+NIF/DNI: 61858910658
+Domicilio: Andador Sur Garica 909 Edif. 960 , Depto. 308, Vieja Maldivas 81948
+Teléfono: 908.301.6613   Email: acorona@arriaga.com
+
+Concepto: Servicios de consultoría (ref. ORD-175954, SKU-78-2542)
+Base imponible: 9668,17 EUR   IVA (10%)
+
+FORMA DE PAGO
+Domiciliación en cuenta GB84FDSS3518190937865
+Tarjeta asociada: 38543231948758

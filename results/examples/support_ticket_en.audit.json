@@ -1,0 +1,413 @@
+{
+  "document_id": "synth-support_ticket-en-0007",
+  "language": "en",
+  "stats": {
+    "n_entities": 9,
+    "n_auto_redacted": 4,
+    "n_review": 4,
+    "n_discarded": 1,
+    "review_rate": 0.4444,
+    "by_type": {
+      "DATE_TIME": 2,
+      "PERSON": 1,
+      "EMAIL": 1,
+      "USERNAME": 1,
+      "PHONE": 1,
+      "CREDENTIAL": 1,
+      "IP_ADDRESS": 1,
+      "GOV_ID": 1
+    },
+    "detections_per_engine": {
+      "rules": 6,
+      "presidio": 6,
+      "model": 9
+    },
+    "engines": [
+      "rules",
+      "presidio",
+      "model"
+    ],
+    "redaction_mode": "mask"
+  },
+  "leaks": [],
+  "entities": [
+    {
+      "text": "Laura Cook",
+      "type": "PERSON",
+      "start": 69,
+      "end": 79,
+      "score": 0.006319165658595732,
+      "source": "presidio",
+      "metadata": {
+        "presidio_label": "PERSON",
+        "detectors": [
+          "presidio"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "presidio": 0.85
+        },
+        "raw_score": 0.85,
+        "calibration_group": "presidio|PERSON",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "discard",
+        "decision_reasons": [
+          "score 0.01 < 0.5"
+        ]
+      },
+      "decision": "discard"
+    },
+    {
+      "text": "lcook@martin.com",
+      "type": "EMAIL",
+      "start": 81,
+      "end": 97,
+      "score": 0.98,
+      "source": "model+presidio+rules",
+      "metadata": {
+        "presidio_label": "EMAIL_ADDRESS",
+        "detectors": [
+          "model",
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 3,
+        "agreement": true,
+        "conflicting_types": [],
+        "raw_scores": {
+          "rules": 0.97,
+          "presidio": 1.0,
+          "model": 0.985
+        },
+        "raw_score": 1.0,
+        "calibration_group": "model+presidio+rules|EMAIL",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    },
+    {
+      "text": "lcook92",
+      "type": "USERNAME",
+      "start": 118,
+      "end": 125,
+      "score": 0.9982015050846736,
+      "source": "model+rules",
+      "metadata": {
+        "n_tokens": 5,
+        "min_token_prob": 0.9882,
+        "mean_margin": 0.9847,
+        "detectors": [
+          "model",
+          "rules"
+        ],
+        "n_agreeing": 2,
+        "agreement": true,
+        "conflicting_types": [],
+        "raw_scores": {
+          "rules": 0.82,
+          "model": 0.99
+        },
+        "raw_score": 0.9982,
+        "calibration_group": "model+rules|USERNAME",
+        "calibrated": true,
+        "group_calibrated": false,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    },
+    {
+      "text": "+44(0)20 7496 0305",
+      "type": "PHONE",
+      "start": 141,
+      "end": 159,
+      "score": 0.9730367131317641,
+      "source": "model+presidio+rules",
+      "metadata": {
+        "rule": "phone_international",
+        "suppressed": [
+          {
+            "type": "PHONE",
+            "start": 141,
+            "end": 159,
+            "score": 0.9,
+            "source": "rules"
+          }
+        ],
+        "detectors": [
+          "model",
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 2,
+        "agreement": true,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.5294,
+          "rules": 0.92,
+          "presidio": 0.75
+        },
+        "raw_score": 0.98,
+        "calibration_group": "model+presidio+rules|PHONE",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    },
+    {
+      "text": "$_l*2uEaD+",
+      "type": "CREDENTIAL",
+      "start": 240,
+      "end": 250,
+      "score": 0.9291043300830159,
+      "source": "model",
+      "metadata": {
+        "n_tokens": 10,
+        "min_token_prob": 0.6986,
+        "mean_margin": 0.8261,
+        "detectors": [
+          "model"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.9016
+        },
+        "raw_score": 0.9016,
+        "calibration_group": "model|CREDENTIAL",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "review",
+        "decision_reasons": [
+          "high-risk CREDENTIAL below 0.95 confidence",
+          "only model detected it"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "66.200.169.12",
+      "type": "IP_ADDRESS",
+      "start": 309,
+      "end": 322,
+      "score": 0.9996969353750618,
+      "source": "model+presidio+rules",
+      "metadata": {
+        "n_tokens": 7,
+        "min_token_prob": 0.9579,
+        "mean_margin": 0.9824,
+        "detectors": [
+          "model",
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 3,
+        "agreement": true,
+        "conflicting_types": [],
+        "raw_scores": {
+          "rules": 0.95,
+          "presidio": 0.95,
+          "model": 0.9882
+        },
+        "raw_score": 1.0,
+        "calibration_group": "model+presidio+rules|IP_ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    },
+    {
+      "text": "09/07/2026",
+      "type": "DATE_TIME",
+      "start": 326,
+      "end": 336,
+      "score": 0.85,
+      "source": "rules",
+      "metadata": {
+        "rule": "date_numeric",
+        "detectors": [
+          "rules"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "rules": 0.85
+        },
+        "raw_score": 0.85,
+        "calibration_group": "rules|DATE_TIME",
+        "calibrated": true,
+        "group_calibrated": false,
+        "decision": "review",
+        "decision_reasons": [
+          "score 0.85 < 0.9",
+          "only rules detected it"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "ZZ 619239 T",
+      "type": "GOV_ID",
+      "start": 380,
+      "end": 391,
+      "score": 0.9650620522784179,
+      "source": "model+presidio",
+      "metadata": {
+        "n_tokens": 6,
+        "min_token_prob": 0.6562,
+        "mean_margin": 0.8323,
+        "detectors": [
+          "model",
+          "presidio"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [
+          "DATE_TIME"
+        ],
+        "raw_scores": {
+          "model": 0.9002,
+          "presidio": 0.85
+        },
+        "raw_score": 0.6752,
+        "calibration_group": "model+presidio|GOV_ID",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "review",
+        "decision_reasons": [
+          "type conflict with ['DATE_TIME']"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "10/13/1970",
+      "type": "DATE_TIME",
+      "start": 409,
+      "end": 419,
+      "score": 0.7124999999999999,
+      "source": "model+presidio+rules",
+      "metadata": {
+        "presidio_label": "DATE_TIME",
+        "detectors": [
+          "model",
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [
+          "DATE_OF_BIRTH"
+        ],
+        "raw_scores": {
+          "rules": 0.9,
+          "presidio": 0.95,
+          "model": 0.7856
+        },
+        "raw_score": 0.7125,
+        "calibration_group": "model+presidio+rules|DATE_TIME",
+        "calibrated": true,
+        "group_calibrated": false,
+        "decision": "review",
+        "decision_reasons": [
+          "type conflict with ['DATE_OF_BIRTH']",
+          "score 0.71 < 0.9"
+        ]
+      },
+      "decision": "review"
+    }
+  ],
+  "review_items": [
+    {
+      "document_id": "synth-support_ticket-en-0007",
+      "entity_type": "CREDENTIAL",
+      "text": "$_l*2uEaD+",
+      "start": 240,
+      "end": 250,
+      "score": 0.9291,
+      "reasons": [
+        "high-risk CREDENTIAL below 0.95 confidence",
+        "only model detected it"
+      ],
+      "context": "...tomer cannot sign in. They report resetting the password to <<$_l*2uEaD+>>0% and still getting an error. Last recorded login from IP 6...",
+      "source": "model",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-support_ticket-en-0007",
+      "entity_type": "DATE_TIME",
+      "text": "09/07/2026",
+      "start": 326,
+      "end": 336,
+      "score": 0.85,
+      "reasons": [
+        "score 0.85 < 0.9",
+        "only rules detected it"
+      ],
+      "context": "...ting an error. Last recorded login from IP 66.200.169.12 on <<09/07/2026>>.  IDENTITY VERIFICATION Document provided: ZZ 619239 T   Da...",
+      "source": "rules",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-support_ticket-en-0007",
+      "entity_type": "GOV_ID",
+      "text": "ZZ 619239 T",
+      "start": 380,
+      "end": 391,
+      "score": 0.9651,
+      "reasons": [
+        "type conflict with ['DATE_TIME']"
+      ],
+      "context": "...12 on 09/07/2026.  IDENTITY VERIFICATION Document provided: <<ZZ 619239 T>>   Date of birth: 10/13/1970 Internal note: check for duplic...",
+      "source": "model+presidio",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-support_ticket-en-0007",
+      "entity_type": "DATE_TIME",
+      "text": "10/13/1970",
+      "start": 409,
+      "end": 419,
+      "score": 0.7125,
+      "reasons": [
+        "type conflict with ['DATE_OF_BIRTH']",
+        "score 0.71 < 0.9"
+      ],
+      "context": "...ERIFICATION Document provided: ZZ 619239 T   Date of birth: <<10/13/1970>> Internal note: check for duplicate of TCK-12957. ",
+      "source": "model+presidio+rules",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    }
+  ]
+}

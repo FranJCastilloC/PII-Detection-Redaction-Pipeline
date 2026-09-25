@@ -1,0 +1,15 @@
+SERVICES AGREEMENT No. CT-2025-796
+
+BETWEEN
+
+Party A: Robert Kelly, holder of identification number [GOV_ID], born on [DATE_OF_BIRTH], residing at [ADDRESS] [ADDRESS], [ADDRESS] (the "Client").
+
+Party B: Toni Cooper, of [ADDRESS] [ADDRESS], reachable at [EMAIL] (the "Provider").
+
+TERMS
+
+1. The [DATE] fee is set at [DATE].
+2. Payment shall be made to account [BANK_ACCOUNT].
+3. Notices shall be sent to [PHONE].
+
+Signed in [ADDRESS] [ADDRESS] on [DATE].

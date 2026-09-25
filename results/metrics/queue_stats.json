@@ -1,0 +1,14 @@
+{
+  "n_documents": 120,
+  "decisions": {
+    "auto_redact": 596,
+    "review": 764,
+    "discard": 271
+  },
+  "review_rate": 0.4684,
+  "auto_rate": 0.3654,
+  "verbatim_leaks_after_redaction": 0,
+  "queue_status": {
+    "pending": 764
+  }
+}

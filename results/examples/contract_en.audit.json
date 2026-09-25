@@ -1,0 +1,803 @@
+{
+  "document_id": "synth-contract-en-0003",
+  "language": "en",
+  "stats": {
+    "n_entities": 17,
+    "n_auto_redacted": 4,
+    "n_review": 11,
+    "n_discarded": 2,
+    "review_rate": 0.6471,
+    "by_type": {
+      "ADDRESS": 7,
+      "DATE_TIME": 3,
+      "PERSON": 2,
+      "GOV_ID": 1,
+      "DATE_OF_BIRTH": 1,
+      "EMAIL": 1,
+      "BANK_ACCOUNT": 1,
+      "PHONE": 1
+    },
+    "detections_per_engine": {
+      "rules": 6,
+      "presidio": 13,
+      "model": 16
+    },
+    "engines": [
+      "rules",
+      "presidio",
+      "model"
+    ],
+    "redaction_mode": "mask"
+  },
+  "leaks": [],
+  "entities": [
+    {
+      "text": "Robert Kelly",
+      "type": "PERSON",
+      "start": 54,
+      "end": 66,
+      "score": 0.006319165658595732,
+      "source": "presidio",
+      "metadata": {
+        "presidio_label": "PERSON",
+        "detectors": [
+          "presidio"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "presidio": 0.85
+        },
+        "raw_score": 0.85,
+        "calibration_group": "presidio|PERSON",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "discard",
+        "decision_reasons": [
+          "score 0.01 < 0.5"
+        ]
+      },
+      "decision": "discard"
+    },
+    {
+      "text": "519-40-3526",
+      "type": "GOV_ID",
+      "start": 100,
+      "end": 111,
+      "score": 0.9991086849426558,
+      "source": "model+presidio+rules",
+      "metadata": {
+        "rule": "ssn",
+        "checksum": "ssn",
+        "checksum_passed": true,
+        "detectors": [
+          "model",
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 3,
+        "agreement": true,
+        "conflicting_types": [],
+        "raw_scores": {
+          "rules": 0.99,
+          "presidio": 0.5,
+          "model": 0.9934
+        },
+        "raw_score": 1.0,
+        "calibration_group": "model+presidio+rules|GOV_ID",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    },
+    {
+      "text": "05/17/1956",
+      "type": "DATE_OF_BIRTH",
+      "start": 121,
+      "end": 131,
+      "score": 0.7481164454224095,
+      "source": "model+presidio+rules",
+      "metadata": {
+        "n_tokens": 5,
+        "min_token_prob": 0.9706,
+        "mean_margin": 0.9641,
+        "detectors": [
+          "model",
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 2,
+        "agreement": true,
+        "conflicting_types": [
+          "DATE_TIME"
+        ],
+        "raw_scores": {
+          "rules": 0.9,
+          "presidio": 0.6,
+          "model": 0.9749
+        },
+        "raw_score": 0.7481,
+        "calibration_group": "model+presidio+rules|DATE_OF_BIRTH",
+        "calibrated": true,
+        "group_calibrated": false,
+        "decision": "review",
+        "decision_reasons": [
+          "type conflict with ['DATE_TIME']",
+          "score 0.75 < 0.9"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "14402",
+      "type": "ADDRESS",
+      "start": 145,
+      "end": 150,
+      "score": 0.7662847162885361,
+      "source": "model+presidio",
+      "metadata": {
+        "n_tokens": 2,
+        "min_token_prob": 0.8442,
+        "mean_margin": 0.8384,
+        "detectors": [
+          "model",
+          "presidio"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [
+          "DATE_TIME"
+        ],
+        "raw_scores": {
+          "presidio": 0.85,
+          "model": 0.9067
+        },
+        "raw_score": 0.68,
+        "calibration_group": "model+presidio|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "review",
+        "decision_reasons": [
+          "type conflict with ['DATE_TIME']",
+          "score 0.77 < 0.9"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "Campos Viaduct",
+      "type": "ADDRESS",
+      "start": 151,
+      "end": 165,
+      "score": 0.7651052083478691,
+      "source": "model+presidio",
+      "metadata": {
+        "n_tokens": 3,
+        "min_token_prob": 0.7849,
+        "mean_margin": 0.8382,
+        "detectors": [
+          "model",
+          "presidio"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [
+          "PERSON"
+        ],
+        "raw_scores": {
+          "presidio": 0.85,
+          "model": 0.9007
+        },
+        "raw_score": 0.6755,
+        "calibration_group": "model+presidio|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "review",
+        "decision_reasons": [
+          "type conflict with ['PERSON']",
+          "score 0.77 < 0.9"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "Atkinsonview",
+      "type": "ADDRESS",
+      "start": 167,
+      "end": 179,
+      "score": 0.984601442898063,
+      "source": "model",
+      "metadata": {
+        "n_tokens": 2,
+        "min_token_prob": 0.9462,
+        "mean_margin": 0.9231,
+        "detectors": [
+          "model"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.9534
+        },
+        "raw_score": 0.9534,
+        "calibration_group": "model|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    },
+    {
+      "text": "Toni Cooper",
+      "type": "PERSON",
+      "start": 206,
+      "end": 217,
+      "score": 0.006319165658595732,
+      "source": "presidio",
+      "metadata": {
+        "presidio_label": "PERSON",
+        "detectors": [
+          "presidio"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "presidio": 0.85
+        },
+        "raw_score": 0.85,
+        "calibration_group": "presidio|PERSON",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "discard",
+        "decision_reasons": [
+          "score 0.01 < 0.5"
+        ]
+      },
+      "decision": "discard"
+    },
+    {
+      "text": "72247",
+      "type": "ADDRESS",
+      "start": 222,
+      "end": 227,
+      "score": 0.7672112625456741,
+      "source": "model+presidio",
+      "metadata": {
+        "n_tokens": 2,
+        "min_token_prob": 0.8619,
+        "mean_margin": 0.8612,
+        "detectors": [
+          "model",
+          "presidio"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [
+          "DATE_TIME"
+        ],
+        "raw_scores": {
+          "presidio": 0.85,
+          "model": 0.9114
+        },
+        "raw_score": 0.6836,
+        "calibration_group": "model+presidio|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "review",
+        "decision_reasons": [
+          "type conflict with ['DATE_TIME']",
+          "score 0.77 < 0.9"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "Jose Isle Suite 304",
+      "type": "ADDRESS",
+      "start": 228,
+      "end": 247,
+      "score": 0.868307066354716,
+      "source": "model+presidio",
+      "metadata": {
+        "n_tokens": 4,
+        "min_token_prob": 0.8823,
+        "mean_margin": 0.9251,
+        "detectors": [
+          "model",
+          "presidio"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "presidio": 0.85,
+          "model": 0.9504
+        },
+        "raw_score": 0.9504,
+        "calibration_group": "model+presidio|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "review",
+        "decision_reasons": [
+          "score 0.87 < 0.9"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "tcooper@daniel.com",
+      "type": "EMAIL",
+      "start": 262,
+      "end": 280,
+      "score": 0.98,
+      "source": "model+presidio+rules",
+      "metadata": {
+        "presidio_label": "EMAIL_ADDRESS",
+        "detectors": [
+          "model",
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 3,
+        "agreement": true,
+        "conflicting_types": [],
+        "raw_scores": {
+          "rules": 0.97,
+          "presidio": 1.0,
+          "model": 0.9812
+        },
+        "raw_score": 1.0,
+        "calibration_group": "model+presidio+rules|EMAIL",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    },
+    {
+      "text": "annual",
+      "type": "DATE_TIME",
+      "start": 314,
+      "end": 320,
+      "score": 0.85,
+      "source": "presidio",
+      "metadata": {
+        "presidio_label": "DATE_TIME",
+        "detectors": [
+          "presidio"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "presidio": 0.85
+        },
+        "raw_score": 0.85,
+        "calibration_group": "presidio|DATE_TIME",
+        "calibrated": true,
+        "group_calibrated": false,
+        "decision": "review",
+        "decision_reasons": [
+          "score 0.85 < 0.9",
+          "only presidio detected it"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "1096,89 USD",
+      "type": "DATE_TIME",
+      "start": 335,
+      "end": 346,
+      "score": 0.85,
+      "source": "presidio",
+      "metadata": {
+        "presidio_label": "DATE_TIME",
+        "detectors": [
+          "presidio"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "presidio": 0.85
+        },
+        "raw_score": 0.85,
+        "calibration_group": "presidio|DATE_TIME",
+        "calibrated": true,
+        "group_calibrated": false,
+        "decision": "review",
+        "decision_reasons": [
+          "score 0.85 < 0.9",
+          "only presidio detected it"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "GB28QSPW51402614014193",
+      "type": "BANK_ACCOUNT",
+      "start": 384,
+      "end": 406,
+      "score": 0.75,
+      "source": "model+presidio+rules",
+      "metadata": {
+        "rule": "iban",
+        "checksum": "iban",
+        "checksum_passed": true,
+        "context_keyword": "account",
+        "detectors": [
+          "model",
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 2,
+        "agreement": true,
+        "conflicting_types": [
+          "GOV_ID"
+        ],
+        "raw_scores": {
+          "rules": 0.99,
+          "presidio": 1.0,
+          "model": 0.9439
+        },
+        "raw_score": 0.75,
+        "calibration_group": "model+presidio+rules|BANK_ACCOUNT",
+        "calibrated": true,
+        "group_calibrated": false,
+        "decision": "review",
+        "decision_reasons": [
+          "type conflict with ['GOV_ID']",
+          "high-risk BANK_ACCOUNT below 0.95 confidence",
+          "score 0.75 < 0.9"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "+1-377-306-5894",
+      "type": "PHONE",
+      "start": 436,
+      "end": 451,
+      "score": 0.8168719904674403,
+      "source": "model+rules",
+      "metadata": {
+        "rule": "phone_international",
+        "suppressed": [
+          {
+            "type": "PHONE",
+            "start": 439,
+            "end": 451,
+            "score": 0.85,
+            "source": "rules"
+          }
+        ],
+        "detectors": [
+          "model",
+          "rules"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.4859,
+          "rules": 0.92
+        },
+        "raw_score": 0.92,
+        "calibration_group": "model+rules|PHONE",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "review",
+        "decision_reasons": [
+          "score 0.82 < 0.9"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "Lake",
+      "type": "ADDRESS",
+      "start": 464,
+      "end": 468,
+      "score": 0.9494872993991276,
+      "source": "model",
+      "metadata": {
+        "n_tokens": 1,
+        "min_token_prob": 0.7723,
+        "mean_margin": 0.5591,
+        "detectors": [
+          "model"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.7723
+        },
+        "raw_score": 0.7723,
+        "calibration_group": "model|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "review",
+        "decision_reasons": [
+          "only model detected it"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "Jillianview",
+      "type": "ADDRESS",
+      "start": 469,
+      "end": 480,
+      "score": 0.9450852531704468,
+      "source": "model",
+      "metadata": {
+        "n_tokens": 3,
+        "min_token_prob": 0.4846,
+        "mean_margin": 0.6511,
+        "detectors": [
+          "model"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.7487
+        },
+        "raw_score": 0.7487,
+        "calibration_group": "model|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "review",
+        "decision_reasons": [
+          "only model detected it"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "07/30/2026",
+      "type": "DATE_TIME",
+      "start": 484,
+      "end": 494,
+      "score": 0.9921542456686072,
+      "source": "model+presidio+rules",
+      "metadata": {
+        "rule": "date_numeric",
+        "detectors": [
+          "model",
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 3,
+        "agreement": true,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.6513,
+          "rules": 0.85,
+          "presidio": 0.85
+        },
+        "raw_score": 0.9922,
+        "calibration_group": "model+presidio+rules|DATE_TIME",
+        "calibrated": true,
+        "group_calibrated": false,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    }
+  ],
+  "review_items": [
+    {
+      "document_id": "synth-contract-en-0003",
+      "entity_type": "DATE_OF_BIRTH",
+      "text": "05/17/1956",
+      "start": 121,
+      "end": 131,
+      "score": 0.7481,
+      "reasons": [
+        "type conflict with ['DATE_TIME']",
+        "score 0.75 < 0.9"
+      ],
+      "context": "...Kelly, holder of identification number 519-40-3526, born on <<05/17/1956>>, residing at 14402 Campos Viaduct, Atkinsonview (the \"Clien...",
+      "source": "model+presidio+rules",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-contract-en-0003",
+      "entity_type": "ADDRESS",
+      "text": "14402",
+      "start": 145,
+      "end": 150,
+      "score": 0.7663,
+      "reasons": [
+        "type conflict with ['DATE_TIME']",
+        "score 0.77 < 0.9"
+      ],
+      "context": "...ication number 519-40-3526, born on 05/17/1956, residing at <<14402>> Campos Viaduct, Atkinsonview (the \"Client\").  Party B: Toni...",
+      "source": "model+presidio",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-contract-en-0003",
+      "entity_type": "ADDRESS",
+      "text": "Campos Viaduct",
+      "start": 151,
+      "end": 165,
+      "score": 0.7651,
+      "reasons": [
+        "type conflict with ['PERSON']",
+        "score 0.77 < 0.9"
+      ],
+      "context": "...n number 519-40-3526, born on 05/17/1956, residing at 14402 <<Campos Viaduct>>, Atkinsonview (the \"Client\").  Party B: Toni Cooper, of 722...",
+      "source": "model+presidio",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-contract-en-0003",
+      "entity_type": "ADDRESS",
+      "text": "72247",
+      "start": 222,
+      "end": 227,
+      "score": 0.7672,
+      "reasons": [
+        "type conflict with ['DATE_TIME']",
+        "score 0.77 < 0.9"
+      ],
+      "context": "...uct, Atkinsonview (the \"Client\").  Party B: Toni Cooper, of <<72247>> Jose Isle Suite 304, reachable at tcooper@daniel.com (the \"...",
+      "source": "model+presidio",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-contract-en-0003",
+      "entity_type": "ADDRESS",
+      "text": "Jose Isle Suite 304",
+      "start": 228,
+      "end": 247,
+      "score": 0.8683,
+      "reasons": [
+        "score 0.87 < 0.9"
+      ],
+      "context": "...tkinsonview (the \"Client\").  Party B: Toni Cooper, of 72247 <<Jose Isle Suite 304>>, reachable at tcooper@daniel.com (the \"Provider\").  TERMS  ...",
+      "source": "model+presidio",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-contract-en-0003",
+      "entity_type": "DATE_TIME",
+      "text": "annual",
+      "start": 314,
+      "end": 320,
+      "score": 0.85,
+      "reasons": [
+        "score 0.85 < 0.9",
+        "only presidio detected it"
+      ],
+      "context": "...able at tcooper@daniel.com (the \"Provider\").  TERMS  1. The <<annual>> fee is set at 1096,89 USD. 2. Payment shall be made to acco...",
+      "source": "presidio",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-contract-en-0003",
+      "entity_type": "DATE_TIME",
+      "text": "1096,89 USD",
+      "start": 335,
+      "end": 346,
+      "score": 0.85,
+      "reasons": [
+        "score 0.85 < 0.9",
+        "only presidio detected it"
+      ],
+      "context": "...l.com (the \"Provider\").  TERMS  1. The annual fee is set at <<1096,89 USD>>. 2. Payment shall be made to account GB28QSPW51402614014193...",
+      "source": "presidio",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-contract-en-0003",
+      "entity_type": "BANK_ACCOUNT",
+      "text": "GB28QSPW51402614014193",
+      "start": 384,
+      "end": 406,
+      "score": 0.75,
+      "reasons": [
+        "type conflict with ['GOV_ID']",
+        "high-risk BANK_ACCOUNT below 0.95 confidence",
+        "score 0.75 < 0.9"
+      ],
+      "context": "... is set at 1096,89 USD. 2. Payment shall be made to account <<GB28QSPW51402614014193>>. 3. Notices shall be sent to +1-377-306-5894.  Signed in La...",
+      "source": "model+presidio+rules",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-contract-en-0003",
+      "entity_type": "PHONE",
+      "text": "+1-377-306-5894",
+      "start": 436,
+      "end": 451,
+      "score": 0.8169,
+      "reasons": [
+        "score 0.82 < 0.9"
+      ],
+      "context": "...account GB28QSPW51402614014193. 3. Notices shall be sent to <<+1-377-306-5894>>.  Signed in Lake Jillianview on 07/30/2026. ",
+      "source": "model+rules",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-contract-en-0003",
+      "entity_type": "ADDRESS",
+      "text": "Lake",
+      "start": 464,
+      "end": 468,
+      "score": 0.9495,
+      "reasons": [
+        "only model detected it"
+      ],
+      "context": "...93. 3. Notices shall be sent to +1-377-306-5894.  Signed in <<Lake>> Jillianview on 07/30/2026. ",
+      "source": "model",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-contract-en-0003",
+      "entity_type": "ADDRESS",
+      "text": "Jillianview",
+      "start": 469,
+      "end": 480,
+      "score": 0.9451,
+      "reasons": [
+        "only model detected it"
+      ],
+      "context": ".... Notices shall be sent to +1-377-306-5894.  Signed in Lake <<Jillianview>> on 07/30/2026. ",
+      "source": "model",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    }
+  ]
+}

@@ -1,0 +1,823 @@
+{
+  "document_id": "synth-invoice-es-0000",
+  "language": "es",
+  "stats": {
+    "n_entities": 18,
+    "n_auto_redacted": 4,
+    "n_review": 11,
+    "n_discarded": 3,
+    "review_rate": 0.6111,
+    "by_type": {
+      "ADDRESS": 9,
+      "GOV_ID": 3,
+      "DATE_TIME": 1,
+      "PERSON": 1,
+      "PHONE": 1,
+      "EMAIL": 1,
+      "BANK_ACCOUNT": 1,
+      "CREDIT_CARD": 1
+    },
+    "detections_per_engine": {
+      "rules": 6,
+      "presidio": 13,
+      "model": 17
+    },
+    "engines": [
+      "rules",
+      "presidio",
+      "model"
+    ],
+    "redaction_mode": "mask"
+  },
+  "leaks": [],
+  "entities": [
+    {
+      "text": "Cabán-Jimínez\nFecha de emisión",
+      "type": "ADDRESS",
+      "start": 22,
+      "end": 52,
+      "score": 0.7553434156202484,
+      "source": "model+presidio",
+      "metadata": {
+        "presidio_label": "LOCATION",
+        "detectors": [
+          "model",
+          "presidio"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [
+          "PERSON"
+        ],
+        "raw_scores": {
+          "presidio": 0.85,
+          "model": 0.3627
+        },
+        "raw_score": 0.6375,
+        "calibration_group": "model+presidio|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "review",
+        "decision_reasons": [
+          "type conflict with ['PERSON']",
+          "score 0.76 < 0.9"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "16/01/2026",
+      "type": "DATE_TIME",
+      "start": 54,
+      "end": 64,
+      "score": 0.9827681504045048,
+      "source": "model+presidio+rules",
+      "metadata": {
+        "rule": "date_numeric",
+        "detectors": [
+          "model",
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 3,
+        "agreement": true,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.7128,
+          "rules": 0.85,
+          "presidio": 0.6
+        },
+        "raw_score": 0.9828,
+        "calibration_group": "model+presidio+rules|DATE_TIME",
+        "calibrated": true,
+        "group_calibrated": false,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    },
+    {
+      "text": "Aida Corona",
+      "type": "PERSON",
+      "start": 92,
+      "end": 103,
+      "score": 0.9625,
+      "source": "model+presidio+rules",
+      "metadata": {
+        "presidio_label": "PERSON",
+        "detectors": [
+          "model",
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 2,
+        "agreement": true,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.5116,
+          "rules": 0.75,
+          "presidio": 0.85
+        },
+        "raw_score": 0.9625,
+        "calibration_group": "model+presidio+rules|PERSON",
+        "calibrated": true,
+        "group_calibrated": false,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    },
+    {
+      "text": "61858910658",
+      "type": "GOV_ID",
+      "start": 113,
+      "end": 124,
+      "score": 0.9670375296904861,
+      "source": "model+presidio",
+      "metadata": {
+        "n_tokens": 6,
+        "min_token_prob": 0.9923,
+        "mean_margin": 0.9895,
+        "detectors": [
+          "model",
+          "presidio"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [
+          "ADDRESS"
+        ],
+        "raw_scores": {
+          "model": 0.9937,
+          "presidio": 0.85
+        },
+        "raw_score": 0.7453,
+        "calibration_group": "model+presidio|GOV_ID",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "review",
+        "decision_reasons": [
+          "type conflict with ['ADDRESS']"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "Sur Garica 909 Edif",
+      "type": "ADDRESS",
+      "start": 144,
+      "end": 163,
+      "score": 0.8495365458267425,
+      "source": "model+presidio",
+      "metadata": {
+        "presidio_label": "LOCATION",
+        "detectors": [
+          "model",
+          "presidio"
+        ],
+        "n_agreeing": 2,
+        "agreement": true,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.4779,
+          "presidio": 0.85
+        },
+        "raw_score": 0.9217,
+        "calibration_group": "model+presidio|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "review",
+        "decision_reasons": [
+          "score 0.85 < 0.9"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "960",
+      "type": "ADDRESS",
+      "start": 165,
+      "end": 168,
+      "score": 0.878074904396917,
+      "source": "model",
+      "metadata": {
+        "n_tokens": 1,
+        "min_token_prob": 0.4534,
+        "mean_margin": 0.2442,
+        "detectors": [
+          "model"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.4534
+        },
+        "raw_score": 0.4534,
+        "calibration_group": "model|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "review",
+        "decision_reasons": [
+          "score 0.88 < 0.9",
+          "only model detected it"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "Depto",
+      "type": "ADDRESS",
+      "start": 171,
+      "end": 176,
+      "score": 0.8684029507627803,
+      "source": "model+presidio",
+      "metadata": {
+        "presidio_label": "LOCATION",
+        "detectors": [
+          "model",
+          "presidio"
+        ],
+        "n_agreeing": 2,
+        "agreement": true,
+        "conflicting_types": [],
+        "raw_scores": {
+          "presidio": 0.85,
+          "model": 0.6705
+        },
+        "raw_score": 0.9506,
+        "calibration_group": "model+presidio|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "review",
+        "decision_reasons": [
+          "score 0.87 < 0.9"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "Vieja",
+      "type": "ADDRESS",
+      "start": 183,
+      "end": 188,
+      "score": 0.8400199885787015,
+      "source": "model+presidio",
+      "metadata": {
+        "n_tokens": 2,
+        "min_token_prob": 0.9021,
+        "mean_margin": 0.8301,
+        "detectors": [
+          "model",
+          "presidio"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.7164,
+          "presidio": 0.85
+        },
+        "raw_score": 0.9035,
+        "calibration_group": "model+presidio|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "review",
+        "decision_reasons": [
+          "score 0.84 < 0.9"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "81948",
+      "type": "ADDRESS",
+      "start": 198,
+      "end": 203,
+      "score": 0.9636862486784574,
+      "source": "model",
+      "metadata": {
+        "n_tokens": 2,
+        "min_token_prob": 0.8459,
+        "mean_margin": 0.7554,
+        "detectors": [
+          "model"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.8491
+        },
+        "raw_score": 0.8491,
+        "calibration_group": "model|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "review",
+        "decision_reasons": [
+          "only model detected it"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "Teléfono",
+      "type": "ADDRESS",
+      "start": 204,
+      "end": 212,
+      "score": 0.0352937537526572,
+      "source": "presidio",
+      "metadata": {
+        "presidio_label": "LOCATION",
+        "detectors": [
+          "presidio"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "presidio": 0.85
+        },
+        "raw_score": 0.85,
+        "calibration_group": "presidio|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "discard",
+        "decision_reasons": [
+          "score 0.04 < 0.5"
+        ]
+      },
+      "decision": "discard"
+    },
+    {
+      "text": "908.301.6613",
+      "type": "PHONE",
+      "start": 214,
+      "end": 226,
+      "score": 0.9924073722676328,
+      "source": "model+presidio+rules",
+      "metadata": {
+        "n_tokens": 6,
+        "min_token_prob": 0.8986,
+        "mean_margin": 0.8783,
+        "detectors": [
+          "model",
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 3,
+        "agreement": true,
+        "conflicting_types": [],
+        "raw_scores": {
+          "rules": 0.9,
+          "presidio": 0.4,
+          "model": 0.9315
+        },
+        "raw_score": 0.9959,
+        "calibration_group": "model+presidio+rules|PHONE",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    },
+    {
+      "text": "acorona@arriaga.com",
+      "type": "EMAIL",
+      "start": 236,
+      "end": 255,
+      "score": 0.98,
+      "source": "model+presidio+rules",
+      "metadata": {
+        "presidio_label": "EMAIL_ADDRESS",
+        "detectors": [
+          "model",
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 3,
+        "agreement": true,
+        "conflicting_types": [],
+        "raw_scores": {
+          "rules": 0.97,
+          "presidio": 1.0,
+          "model": 0.9656
+        },
+        "raw_score": 1.0,
+        "calibration_group": "model+presidio+rules|EMAIL",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "auto_redact",
+        "decision_reasons": [
+          "high confidence, no conflicts"
+        ]
+      },
+      "decision": "auto_redact"
+    },
+    {
+      "text": "ORD-175954",
+      "type": "GOV_ID",
+      "start": 298,
+      "end": 308,
+      "score": 0.32053472032692853,
+      "source": "model",
+      "metadata": {
+        "n_tokens": 6,
+        "min_token_prob": 0.451,
+        "mean_margin": 0.3838,
+        "detectors": [
+          "model"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.5796
+        },
+        "raw_score": 0.5796,
+        "calibration_group": "model|GOV_ID",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "discard",
+        "decision_reasons": [
+          "score 0.32 < 0.5"
+        ]
+      },
+      "decision": "discard"
+    },
+    {
+      "text": "SKU-78-2542",
+      "type": "GOV_ID",
+      "start": 310,
+      "end": 321,
+      "score": 0.9519315265865171,
+      "source": "model",
+      "metadata": {
+        "n_tokens": 6,
+        "min_token_prob": 0.9566,
+        "mean_margin": 0.9735,
+        "detectors": [
+          "model"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.9835
+        },
+        "raw_score": 0.9835,
+        "calibration_group": "model|GOV_ID",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "review",
+        "decision_reasons": [
+          "only model detected it"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "9668",
+      "type": "ADDRESS",
+      "start": 339,
+      "end": 343,
+      "score": 0.9505822659168512,
+      "source": "model",
+      "metadata": {
+        "n_tokens": 2,
+        "min_token_prob": 0.6939,
+        "mean_margin": 0.611,
+        "detectors": [
+          "model"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "model": 0.7782
+        },
+        "raw_score": 0.7782,
+        "calibration_group": "model|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "review",
+        "decision_reasons": [
+          "only model detected it"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "PAGO\nDomiciliación",
+      "type": "ADDRESS",
+      "start": 373,
+      "end": 391,
+      "score": 0.0352937537526572,
+      "source": "presidio",
+      "metadata": {
+        "presidio_label": "LOCATION",
+        "detectors": [
+          "presidio"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [],
+        "raw_scores": {
+          "presidio": 0.85
+        },
+        "raw_score": 0.85,
+        "calibration_group": "presidio|ADDRESS",
+        "calibrated": true,
+        "group_calibrated": true,
+        "decision": "discard",
+        "decision_reasons": [
+          "score 0.04 < 0.5"
+        ]
+      },
+      "decision": "discard"
+    },
+    {
+      "text": "GB84FDSS3518190937865",
+      "type": "BANK_ACCOUNT",
+      "start": 402,
+      "end": 423,
+      "score": 0.7424999999999999,
+      "source": "model+presidio+rules",
+      "metadata": {
+        "rule": "iban",
+        "checksum": "iban",
+        "checksum_passed": true,
+        "context_keyword": "cuenta",
+        "detectors": [
+          "model",
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 1,
+        "agreement": false,
+        "conflicting_types": [
+          "ADDRESS",
+          "GOV_ID"
+        ],
+        "raw_scores": {
+          "rules": 0.99,
+          "model": 0.9539,
+          "presidio": 0.85
+        },
+        "raw_score": 0.7425,
+        "calibration_group": "model+presidio+rules|BANK_ACCOUNT",
+        "calibrated": true,
+        "group_calibrated": false,
+        "decision": "review",
+        "decision_reasons": [
+          "type conflict with ['ADDRESS', 'GOV_ID']",
+          "high-risk BANK_ACCOUNT below 0.95 confidence",
+          "score 0.74 < 0.9"
+        ]
+      },
+      "decision": "review"
+    },
+    {
+      "text": "38543231948758",
+      "type": "CREDIT_CARD",
+      "start": 442,
+      "end": 456,
+      "score": 0.75,
+      "source": "model+presidio+rules",
+      "metadata": {
+        "rule": "credit_card",
+        "checksum": "luhn",
+        "checksum_passed": true,
+        "context_keyword": "tarjeta",
+        "detectors": [
+          "model",
+          "presidio",
+          "rules"
+        ],
+        "n_agreeing": 2,
+        "agreement": true,
+        "conflicting_types": [
+          "GOV_ID"
+        ],
+        "raw_scores": {
+          "rules": 0.99,
+          "presidio": 1.0,
+          "model": 0.5652
+        },
+        "raw_score": 0.75,
+        "calibration_group": "model+presidio+rules|CREDIT_CARD",
+        "calibrated": true,
+        "group_calibrated": false,
+        "decision": "review",
+        "decision_reasons": [
+          "type conflict with ['GOV_ID']",
+          "high-risk CREDIT_CARD below 0.95 confidence",
+          "score 0.75 < 0.9"
+        ]
+      },
+      "decision": "review"
+    }
+  ],
+  "review_items": [
+    {
+      "document_id": "synth-invoice-es-0000",
+      "entity_type": "ADDRESS",
+      "text": "Cabán-Jimínez\nFecha de emisión",
+      "start": 22,
+      "end": 52,
+      "score": 0.7553,
+      "reasons": [
+        "type conflict with ['PERSON']",
+        "score 0.76 < 0.9"
+      ],
+      "context": "FACTURA N.º 2025-1791 <<Cabán-Jimínez Fecha de emisión>>: 16/01/2026  DATOS DEL CLIENTE Nombre: Aida Corona NIF/DNI:...",
+      "source": "model+presidio",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-invoice-es-0000",
+      "entity_type": "GOV_ID",
+      "text": "61858910658",
+      "start": 113,
+      "end": 124,
+      "score": 0.967,
+      "reasons": [
+        "type conflict with ['ADDRESS']"
+      ],
+      "context": "... 16/01/2026  DATOS DEL CLIENTE Nombre: Aida Corona NIF/DNI: <<61858910658>> Domicilio: Andador Sur Garica 909 Edif. 960 , Depto. 308, V...",
+      "source": "model+presidio",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-invoice-es-0000",
+      "entity_type": "ADDRESS",
+      "text": "Sur Garica 909 Edif",
+      "start": 144,
+      "end": 163,
+      "score": 0.8495,
+      "reasons": [
+        "score 0.85 < 0.9"
+      ],
+      "context": "...Nombre: Aida Corona NIF/DNI: 61858910658 Domicilio: Andador <<Sur Garica 909 Edif>>. 960 , Depto. 308, Vieja Maldivas 81948 Teléfono: 908.301.6...",
+      "source": "model+presidio",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-invoice-es-0000",
+      "entity_type": "ADDRESS",
+      "text": "960",
+      "start": 165,
+      "end": 168,
+      "score": 0.8781,
+      "reasons": [
+        "score 0.88 < 0.9",
+        "only model detected it"
+      ],
+      "context": "...IF/DNI: 61858910658 Domicilio: Andador Sur Garica 909 Edif. <<960>> , Depto. 308, Vieja Maldivas 81948 Teléfono: 908.301.6613  ...",
+      "source": "model",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-invoice-es-0000",
+      "entity_type": "ADDRESS",
+      "text": "Depto",
+      "start": 171,
+      "end": 176,
+      "score": 0.8684,
+      "reasons": [
+        "score 0.87 < 0.9"
+      ],
+      "context": "...: 61858910658 Domicilio: Andador Sur Garica 909 Edif. 960 , <<Depto>>. 308, Vieja Maldivas 81948 Teléfono: 908.301.6613   Email: ...",
+      "source": "model+presidio",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-invoice-es-0000",
+      "entity_type": "ADDRESS",
+      "text": "Vieja",
+      "start": 183,
+      "end": 188,
+      "score": 0.84,
+      "reasons": [
+        "score 0.84 < 0.9"
+      ],
+      "context": "...8 Domicilio: Andador Sur Garica 909 Edif. 960 , Depto. 308, <<Vieja>> Maldivas 81948 Teléfono: 908.301.6613   Email: acorona@arri...",
+      "source": "model+presidio",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-invoice-es-0000",
+      "entity_type": "ADDRESS",
+      "text": "81948",
+      "start": 198,
+      "end": 203,
+      "score": 0.9637,
+      "reasons": [
+        "only model detected it"
+      ],
+      "context": "...dador Sur Garica 909 Edif. 960 , Depto. 308, Vieja Maldivas <<81948>> Teléfono: 908.301.6613   Email: acorona@arriaga.com  Concep...",
+      "source": "model",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-invoice-es-0000",
+      "entity_type": "GOV_ID",
+      "text": "SKU-78-2542",
+      "start": 310,
+      "end": 321,
+      "score": 0.9519,
+      "reasons": [
+        "only model detected it"
+      ],
+      "context": "...a.com  Concepto: Servicios de consultoría (ref. ORD-175954, <<SKU-78-2542>>) Base imponible: 9668,17 EUR   IVA (10%)  FORMA DE PAGO Dom...",
+      "source": "model",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-invoice-es-0000",
+      "entity_type": "ADDRESS",
+      "text": "9668",
+      "start": 339,
+      "end": 343,
+      "score": 0.9506,
+      "reasons": [
+        "only model detected it"
+      ],
+      "context": "... consultoría (ref. ORD-175954, SKU-78-2542) Base imponible: <<9668>>,17 EUR   IVA (10%)  FORMA DE PAGO Domiciliación en cuenta G...",
+      "source": "model",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-invoice-es-0000",
+      "entity_type": "BANK_ACCOUNT",
+      "text": "GB84FDSS3518190937865",
+      "start": 402,
+      "end": 423,
+      "score": 0.7425,
+      "reasons": [
+        "type conflict with ['ADDRESS', 'GOV_ID']",
+        "high-risk BANK_ACCOUNT below 0.95 confidence",
+        "score 0.74 < 0.9"
+      ],
+      "context": "...8,17 EUR   IVA (10%)  FORMA DE PAGO Domiciliación en cuenta <<GB84FDSS3518190937865>> Tarjeta asociada: 38543231948758 ",
+      "source": "model+presidio+rules",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    },
+    {
+      "document_id": "synth-invoice-es-0000",
+      "entity_type": "CREDIT_CARD",
+      "text": "38543231948758",
+      "start": 442,
+      "end": 456,
+      "score": 0.75,
+      "reasons": [
+        "type conflict with ['GOV_ID']",
+        "high-risk CREDIT_CARD below 0.95 confidence",
+        "score 0.75 < 0.9"
+      ],
+      "context": "...ciliación en cuenta GB84FDSS3518190937865 Tarjeta asociada: <<38543231948758>> ",
+      "source": "model+presidio+rules",
+      "status": "pending",
+      "created_at": "2026-09-18T06:28:28+00:00",
+      "resolved_at": null,
+      "reviewer_note": ""
+    }
+  ]
+}

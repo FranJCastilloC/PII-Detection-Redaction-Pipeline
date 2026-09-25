@@ -1,0 +1,15 @@
+FACTURA N.º 2025-1791
+[DIRECCION]: [FECHA]
+
+DATOS DEL CLIENTE
+Nombre: [NOMBRE]
+NIF/DNI: [IDENTIFICACION]
+Domicilio: Andador [DIRECCION]. [DIRECCION] , [DIRECCION]. 308, [DIRECCION] Maldivas [DIRECCION]
+Teléfono: [TELEFONO]   Email: [EMAIL]
+
+Concepto: Servicios de consultoría (ref. ORD-175954, [IDENTIFICACION])
+Base imponible: [DIRECCION],17 EUR   IVA (10%)
+
+FORMA DE PAGO
+Domiciliación en cuenta [CUENTA_BANCARIA]
+Tarjeta asociada: [TARJETA]

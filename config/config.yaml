@@ -1,0 +1,49 @@
+# Central pipeline configuration. The scripts accept the same values as
+# command-line flags; this file documents the defaults.
+
+data:
+  raw_dir: data/raw
+  processed_dir: data/processed
+  synthetic_file: data/synthetic/documents.jsonl
+  train_size: 40000
+  val_size: 5000
+  test_size: 6000
+  synthetic_docs: 300
+  seed: 13
+
+model:
+  base_model: distilbert-base-multilingual-cased
+  output_dir: models/distilbert-pii-ner
+  max_length: 192
+  stride: 64
+  # Sized to a 16 GB laptop's memory budget: the corpus is heavily templated and
+  # converges on a fraction of the data.
+  limit_train: 15000
+  limit_val: 2000
+  epochs: 2
+  batch_size: 16
+  learning_rate: 5.0e-5
+
+detection:
+  # Character window searched for a disambiguating context keyword.
+  context_window: 45
+  presidio_score_floor: 0.30
+  model_min_score: 0.30
+
+scoring:
+  agreement_iou: 0.5
+  conflict_penalty: 0.75
+  calibrator_path: models/calibrator.json
+
+review_queue:
+  tau_auto: 0.90          # >= : redacted without intervention
+  tau_discard: 0.50       # <  : discarded (still logged)
+  tau_high_risk: 0.95     # cards, accounts, identity documents, credentials
+  tau_single_detector: 0.97
+  review_on_conflict: true
+  db_path: data/review_queue.sqlite
+
+redaction:
+  default_mode: mask      # mask | partial | pseudonymize
+  # In production this key comes from a secret manager, never from the repo.
+  pseudonymization_key_env: PII_PSEUDONYM_KEY
