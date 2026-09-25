@@ -42,7 +42,9 @@ test:  ## Run the test suite
 PORT ?= 8501
 
 app:  ## Launch the Streamlit demo (override with PORT=xxxx)
-	.venv/bin/streamlit run app/streamlit_app.py --server.port $(PORT)
+	# `python -m` instead of the console script: venv launchers hard-code the
+	# absolute path they were created with, so moving the repo breaks them.
+	$(PY) -m streamlit run app/streamlit_app.py --server.port $(PORT)
 
 all: data train calibrate evaluate examples report test  ## Full pipeline
 
